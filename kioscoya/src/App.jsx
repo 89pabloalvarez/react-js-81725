@@ -1,13 +1,17 @@
-import { useState } from 'react'
-import './App.css'
+import Header from './components/layout/Header'
+import Main from './components/layout/Main'
+import Footer from './components/layout/Footer'
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
+      <Header/>
+      <Main view={'home'}/>
+      <Footer/>
     </>
   )
 }
 
-export default App
+export default App;
