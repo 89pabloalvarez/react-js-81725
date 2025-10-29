@@ -1,18 +1,16 @@
-import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap'
+import '../../App.css'
 
 export default function NavBar() {
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="#">Kiosco</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#">Inicio</Nav.Link>
-            <Nav.Link href="#">Acerca de nosotros</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
+    <Navbar expand="md" className="navbar-custom" collapseOnSelect>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mx-auto">
+          <Nav.Link href="/home" className="nav-link">Home</Nav.Link>
+          <Nav.Link href="/about-us" className="nav-link">Acerca de Nosotros</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   )
 }
