@@ -4,7 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start:open": "npm run dev:open",
+    "start:noopen": "npm run dev",
     "dev": "vite",
+    "dev:open": "vite --open",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
