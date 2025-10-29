@@ -1,4 +1,4 @@
-import logo from '../../assets/images/logo_sin_fondo.png'
+import logo from '../../assets/images/logo_dev_sin_fondo.png'
 import '../../App.css'
 
 export default function Footer() {
