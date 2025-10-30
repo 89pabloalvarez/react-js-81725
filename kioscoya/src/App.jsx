@@ -2,7 +2,6 @@ import Header from './components/layout/Header'
 import Main from './components/layout/Main'
 import Footer from './components/layout/Footer'
 
-
 function App() {
 
   return (
@@ -14,4 +13,4 @@ function App() {
   )
 }
 
-export default App;
+export default App
