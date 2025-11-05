@@ -1,8 +1,6 @@
-import React from 'react'
 import { Button, Card } from 'react-bootstrap'
 
 const ProductCard = ({product}) => {
-    console.log('ProductCard product:', product)
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={product.img} />
