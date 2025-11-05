@@ -1,183 +1,363 @@
 const productos = [
   {
-    id: '01',
-    nombre: 'Sugus',
-    precio: 5.99,
-    categoria: 'Caramelos',
-    img: '',
-    descripcion: 'Un caramelo muy copado.',
-    stock: 50
+    id: '1',
+    name: 'Yerba CBSé Guaraná 500g',
+    price: 15.99,
+    category: 'Varios',
+    img: 'https://i.postimg.cc/ygxpdtyQ/yerba-cbse-guarana-500g-removebg-preview.png',
+    description: 'Yerba mate sabor guaraná, paquete de 500g.',
+    stock: 25
   },
   {
-    id: '02',
-    nombre: 'Flynn Paff',
-    precio: 6.49,
-    categoria: 'Caramelos',
-    img: '',
-    descripcion: 'Caramelo masticable con sabor frutal.',
-    stock: 40
-  },
-  {
-    id: '03',
-    nombre: 'Guaymallén Negro',
-    precio: 7.99,
-    categoria: 'Alfajores',
-    img: '',
-    descripcion: 'Alfajor clásico de chocolate.',
-    stock: 60
-  },
-  {
-    id: '04',
-    nombre: 'Guaymallén Blanco',
-    precio: 7.99,
-    categoria: 'Alfajores',
-    img: '',
-    descripcion: 'Alfajor clásico de chocolate blanco.',
-    stock: 60
-  },
-  {
-    id: '05',
-    nombre: 'Jorgito Negro',
-    precio: 8.49,
-    categoria: 'Alfajores',
-    img: '',
-    descripcion: 'Alfajor relleno con dulce de leche.',
-    stock: 50
-  },
-  {
-    id: '06',
-    nombre: 'Jorgito Blanco',
-    precio: 8.49,
-    categoria: 'Alfajores',
-    img: '',
-    descripcion: 'Alfajor con cobertura de chocolate blanco.',
-    stock: 50
-  },
-  {
-    id: '07',
-    nombre: 'Jorgito Negro (pack x6)',
-    precio: 45.00,
-    categoria: 'Alfajores',
-    img: '',
-    descripcion: 'Pack de 6 alfajores Jorgito negro.',
+    id: '2',
+    name: 'Yerba CBSé Hierbas Serranas 1kg',
+    price: 19.99,
+    category: 'Varios',
+    img: 'https://i.postimg.cc/CB5r1Xs4/yerba-cbse-hierbas-serranas-1kg-removebg-preview.png',
+    description: 'Yerba con mezcla de hierbas serranas, paquete de 1kg.',
     stock: 20
   },
   {
-    id: '08',
-    nombre: 'Rasta Blanco',
-    precio: 9.49,
-    categoria: 'Alfajores',
-    img: '',
-    descripcion: 'Alfajor con cobertura blanca y relleno intenso.',
+    id: '3',
+    name: 'Yerba Payadito 1kg',
+    price: 18.49,
+    category: 'Varios',
+    img: 'https://i.postimg.cc/0MjXQF07/yerba-payadito-1kg-removebg-preview.png',
+    description: 'Yerba tradicional Payadito, paquete de 1kg.',
+    stock: 30
+  },
+  {
+    id: '4',
+    name: 'Yerba Payadito 500g',
+    price: 10.99,
+    category: 'Varios',
+    img: 'https://i.postimg.cc/TyCHTfgk/yerba-payadito-500g-removebg-preview.png',
+    description: 'Yerba tradicional Payadito, paquete de 500g.',
+    stock: 35
+  },
+	{
+    id: '5',
+    name: 'Flynn Paff surtido',
+    price: 3.99,
+    category: 'Caramelos',
+    img: 'https://i.postimg.cc/H87S0MKn/flynn-paff-removebg-preview.png',
+    description: 'Caramelos Flynn Paff de varios sabores.',
+    stock: 100
+  },
+  {
+    id: '6',
+    name: 'Sugus surtidos',
+    price: 4.49,
+    category: 'Caramelos',
+    img: 'https://i.postimg.cc/cgz98hDY/sugus-removebg-preview.png',
+    description: 'Caramelos masticables Sugus surtidos.',
+    stock: 120
+  },
+  {
+    id: '7',
+    name: 'Cerveza Brahma lata 473ml',
+    price: 6.49,
+    category: 'Bebidas Con Alcohol',
+    img: 'https://i.postimg.cc/GBc50H88/brahma-lata-removebg-preview.png',
+    description: 'Cerveza Brahma en lata de 473ml.',
     stock: 40
   },
   {
-    id: '09',
-    nombre: 'Rasta Negro',
-    precio: 9.49,
-    categoria: 'Alfajores',
-    img: '',
-    descripcion: 'Alfajor con cobertura negra y sabor intenso.',
-    stock: 40
+    id: '8',
+    name: 'Cerveza Corona botella 330ml',
+    price: 7.99,
+    category: 'Bebidas Con Alcohol',
+    img: 'https://i.postimg.cc/HJphGVcx/corona-removebg-preview.png',
+    description: 'Cerveza Corona en botella de 330ml.',
+    stock: 35
+  },
+  {
+    id: '9',
+    name: 'Cerveza Quilmes lata 473ml',
+    price: 6.29,
+    category: 'Bebidas Con Alcohol',
+    img: 'https://i.postimg.cc/nsHP8CjX/quilmes-lata-removebg-preview.png',
+    description: 'Cerveza Quilmes en lata de 473ml.',
+    stock: 50
   },
   {
     id: '10',
-    nombre: 'Don Satur Bizcocho Dulce',
-    precio: 12.99,
-    categoria: 'Galletitas',
-    img: '',
-    descripcion: 'Bizcochos dulces ideales para el mate.',
+    name: 'Cerveza Stella Artois botella 330ml',
+    price: 8.49,
+    category: 'Bebidas Con Alcohol',
+    img: 'https://i.postimg.cc/HJphGVJF/stella-artois-removebg-preview.png',
+    description: 'Cerveza Stella Artois en botella de 330ml.',
     stock: 30
   },
   {
     id: '11',
-    nombre: 'Don Satur Bizcocho Negrito',
-    precio: 12.99,
-    categoria: 'Galletitas',
-    img: '',
-    descripcion: 'Bizcochos con sabor tostado.',
+    name: 'Chocolate Águila 80% cacao',
+    price: 9.99,
+    category: 'Chocolates',
+    img: 'https://i.postimg.cc/JD0Ynv52/aguila-80-cacao-removebg-preview.png',
+    description: 'Chocolate Águila con 80% de cacao, ideal para repostería.',
     stock: 30
   },
   {
     id: '12',
-    nombre: 'Don Satur Bizcocho Salado',
-    precio: 12.99,
-    categoria: 'Galletitas',
-    img: '',
-    descripcion: 'Bizcochos salados para picar.',
-    stock: 30
-  },
-  {
-    id: '13',
-    nombre: 'Don Satur Magdalena Chocolate con Dulce de Leche',
-    precio: 15.99,
-    categoria: 'Galletitas',
-    img: '',
-    descripcion: 'Magdalena rellena con dulce de leche.',
-    stock: 25
-  },
-  {
-    id: '14',
-    nombre: 'Don Satur Magdalena Vainilla con Dulce de Leche',
-    precio: 15.99,
-    categoria: 'Galletitas',
-    img: '',
-    descripcion: 'Magdalena sabor vainilla rellena.',
-    stock: 25
-  },
-  {
-    id: '15',
-    nombre: 'Oreo',
-    precio: 10.99,
-    categoria: 'Galletitas',
-    img: '',
-    descripcion: 'Galletitas rellenas con crema.',
-    stock: 50
-  },
-  {
-    id: '16',
-    nombre: 'Oreo Golden',
-    precio: 10.99,
-    categoria: 'Galletitas',
-    img: '',
-    descripcion: 'Versión dorada de las clásicas Oreo.',
-    stock: 50
-  },
-  {
-    id: '17',
-    nombre: 'Oreo (pack x3)',
-    precio: 29.99,
-    categoria: 'Galletitas',
-    img: '',
-    descripcion: 'Pack de 3 Oreo clásicas.',
-    stock: 20
-  },
-  {
-    id: '18',
-    nombre: 'Oreo Golden (pack x3)',
-    precio: 29.99,
-    categoria: 'Galletitas',
-    img: '',
-    descripcion: 'Pack de 3 Oreo doradas.',
-    stock: 20
-  },
-  {
-    id: '19',
-    nombre: 'Pepitos',
-    precio: 9.99,
-    categoria: 'Galletitas',
-    img: '',
-    descripcion: 'Galletitas con chips de chocolate.',
+    name: 'Chocolate Águila clásico',
+    price: 8.49,
+    category: 'Chocolates',
+    img: 'https://i.postimg.cc/zbv2B6F6/aguila-removebg-preview.png',
+    description: 'Chocolate Águila clásico semiamargo.',
     stock: 40
   },
   {
+    id: '13',
+    name: 'Chocolate Block con leche',
+    price: 7.99,
+    category: 'Chocolates',
+    img: 'https://i.postimg.cc/gXjtJQHM/block-removebg-preview.png',
+    description: 'Chocolate Block con leche, tableta grande.',
+    stock: 45
+  },
+  {
+    id: '14',
+    name: 'Chocolate Shot relleno con maní',
+    price: 6.99,
+    category: 'Chocolates',
+    img: 'https://i.postimg.cc/G8tg2Vxz/shot-removebg-preview.png',
+    description: 'Chocolate Shot relleno con pasta de maní.',
+    stock: 50
+  },
+  {
+    id: '15',
+    name: 'Alfajor Guaymallén blanco',
+    price: 2.49,
+    category: 'Alfajores',
+    img: 'https://i.postimg.cc/0M4WJntJ/guaymallen-blanco-removebg-preview.png',
+    description: 'Alfajor Guaymallén con cobertura blanca.',
+    stock: 60
+  },
+  {
+    id: '16',
+    name: 'Alfajor Guaymallén negro',
+    price: 2.49,
+    category: 'Alfajores',
+    img: 'https://i.postimg.cc/k6H1tsjR/guaymallen-negro-removebg-preview.png',
+    description: 'Alfajor Guaymallén con cobertura negra.',
+    stock: 60
+  },
+  {
+    id: '17',
+    name: 'Alfajor Jorgito blanco',
+    price: 2.99,
+    category: 'Alfajores',
+    img: 'https://i.postimg.cc/34qSD1L4/jorgito-blanco-removebg-preview.png',
+    description: 'Alfajor Jorgito con cobertura blanca.',
+    stock: 55
+  },
+  {
+    id: '18',
+    name: 'Pack Jorgito negro x6',
+    price: 14.99,
+    category: 'Alfajores',
+    img: 'https://i.postimg.cc/cgz98hD6/jorgito-negro-pack-6-removebg-preview.png',
+    description: 'Pack de 6 alfajores Jorgito negros.',
+    stock: 25
+  },
+  {
+    id: '19',
+    name: 'Alfajor Jorgito negro',
+    price: 2.99,
+    category: 'Alfajores',
+    img: 'https://i.postimg.cc/ygGQSjfD/jorgito-negro-removebg-preview.png',
+    description: 'Alfajor Jorgito con cobertura negra.',
+    stock: 55
+  },
+  {
     id: '20',
-    nombre: 'Pepitos (pack x3)',
-    precio: 27.99,
-    categoria: 'Galletitas',
-    img: '',
-    descripcion: 'Pack de 3 Pepitos.',
+    name: 'Alfajor Rasta blanco',
+    price: 2.49,
+    category: 'Alfajores',
+    img: 'https://i.postimg.cc/hzYy7sCj/rasta-blanco-removebg-preview.png',
+    description: 'Alfajor Rasta con cobertura blanca.',
+    stock: 50
+  },
+  {
+    id: '21',
+    name: 'Alfajor Rasta negro',
+    price: 2.49,
+    category: 'Alfajores',
+    img: 'https://i.postimg.cc/8JYKr4yc/rasta-negro-removebg-preview.png',
+    description: 'Alfajor Rasta con cobertura negra.',
+    stock: 50
+  },
+  {
+    id: '22',
+    name: 'Coca-Cola 1.75L',
+    price: 8.99,
+    category: 'Bebidas Sin Alcohol',
+    img: 'https://i.postimg.cc/mc86TBC8/coca-1-75l-removebg-preview.png',
+    description: 'Botella de Coca-Cola de 1.75 litros.',
+    stock: 50
+  },
+  {
+    id: '23',
+    name: 'Coca-Cola 2.25L',
+    price: 9.99,
+    category: 'Bebidas Sin Alcohol',
+    img: 'https://i.postimg.cc/t12m9pWh/coca-2-25l-removebg-preview.png',
+    description: 'Botella de Coca-Cola de 2.25 litros.',
+    stock: 45
+  },
+  {
+    id: '24',
+    name: 'Coca-Cola 500ml',
+    price: 4.99,
+    category: 'Bebidas Sin Alcohol',
+    img: 'https://i.postimg.cc/mc86TBCF/coca-500ml-removebg-preview.png',
+    description: 'Botella de Coca-Cola de 500ml.',
+    stock: 60
+  },
+  {
+    id: '25',
+    name: 'Coca-Cola lata 354ml',
+    price: 3.99,
+    category: 'Bebidas Sin Alcohol',
+    img: 'https://i.postimg.cc/VSDHzmnR/coca-lata-354ml-removebg-preview.png',
+    description: 'Lata de Coca-Cola de 354ml.',
+    stock: 70
+  },
+  {
+    id: '26',
+    name: 'Pepsi 1.5L',
+    price: 7.99,
+    category: 'Bebidas Sin Alcohol',
+    img: 'https://i.postimg.cc/5HnkfbLx/pepsi-1-5l-removebg-preview.png',
+    description: 'Botella de Pepsi de 1.5 litros.',
+    stock: 40
+  },
+  {
+    id: '27',
+    name: 'Pepsi 3L',
+    price: 10.49,
+    category: 'Bebidas Sin Alcohol',
+    img: 'https://i.postimg.cc/VSDHzmnz/pepsi-3l-removebg-preview.png',
+    description: 'Botella de Pepsi de 3 litros.',
+    stock: 35
+  },
+  {
+    id: '28',
+    name: 'Pepsi 500ml',
+    price: 4.49,
+    category: 'Bebidas Sin Alcohol',
+    img: 'https://i.postimg.cc/94Wn3rRr/pepsi-500ml-removebg-preview.png',
+    description: 'Botella de Pepsi de 500ml.',
+    stock: 55
+  },
+  {
+    id: '29',
+    name: 'Don Satur Bizcocho dulce',
+    price: 3.99,
+    category: 'Galletitas',
+    img: 'https://i.postimg.cc/gX7S6sM2/don-satur-bizcocho-dulce-removebg-preview.png',
+    description: 'Bizcochos dulces Don Satur, ideales para el mate.',
+    stock: 35
+  },
+  {
+    id: '30',
+    name: 'Don Satur Bizcocho negrito',
+    price: 3.99,
+    category: 'Galletitas',
+    img: 'https://i.postimg.cc/JDF6BxT7/don-satur-bizcocho-negrito-removebg-preview.png',
+    description: 'Bizcochos sabor chocolate Don Satur.',
+    stock: 30
+  },
+  {
+    id: '31',
+    name: 'Don Satur Bizcocho salado',
+    price: 3.99,
+    category: 'Galletitas',
+    img: 'https://i.postimg.cc/CB2Pf7vY/don-satur-bizcocho-salado-removebg-preview.png',
+    description: 'Bizcochos salados Don Satur, perfectos para picadas.',
+    stock: 40
+  },
+  {
+    id: '32',
+    name: 'Don Satur Magdalenas chocolate y dulce de leche',
+    price: 5.99,
+    category: 'Galletitas',
+    img: 'https://i.postimg.cc/XGPHyL2W/don-satur-magdalenas-chocolate-con-dulce-de-leche-removebg-preview.png',
+    description: 'Magdalenas sabor chocolate rellenas con dulce de leche.',
+    stock: 25
+  },
+  {
+    id: '33',
+    name: 'Don Satur Magdalenas vainilla y dulce de leche',
+    price: 5.99,
+    category: 'Galletitas',
+    img: 'https://i.postimg.cc/Pp738y6s/don-satur-magdalenas-vainilla-con-dulce-de-leche-removebg-preview.png',
+    description: 'Magdalenas sabor vainilla rellenas con dulce de leche.',
+    stock: 25
+  },
+  {
+    id: '34',
+    name: 'Don Satur Pepas',
+    price: 4.49,
+    category: 'Galletitas',
+    img: 'https://i.postimg.cc/hzYy7s2H/don-satur-pepas-removebg-preview.png',
+    description: 'Pepas clásicas con dulce de membrillo.',
+    stock: 45
+  },
+  {
+    id: '35',
+    name: 'Oreo Golden (pack x3)',
+    price: 29.99,
+    category: 'Galletitas',
+    img: 'https://i.postimg.cc/cgCkH2c0/oreo-golden-pack-3-removebg-preview.png',
+    description: 'Pack de 3 Oreo doradas.',
     stock: 20
+  },
+  {
+    id: '36',
+    name: 'Oreo Golden unidad',
+    price: 10.99,
+    category: 'Galletitas',
+    img: 'https://i.postimg.cc/cgCkH2cd/oreo-golden-removebg-preview.png',
+    description: 'Oreo dorada individual.',
+    stock: 30
+  },
+  {
+    id: '37',
+    name: 'Oreo clásica (pack x3)',
+    price: 29.99,
+    category: 'Galletitas',
+    img: 'https://i.postimg.cc/JD0YnvQ8/oreo-pack-3-removebg-preview.png',
+    description: 'Pack de 3 Oreo clásicas.',
+    stock: 20
+  },
+  {
+    id: '38',
+    name: 'Oreo clásica unidad',
+    price: 10.99,
+    category: 'Galletitas',
+    img: 'https://i.postimg.cc/phSGnCs7/oreo-removebg-preview.png',
+    description: 'Oreo clásica individual.',
+    stock: 30
+  },
+  {
+    id: '39',
+    name: 'Pepitos (pack x3)',
+    price: 27.99,
+    category: 'Galletitas',
+    img: 'https://i.postimg.cc/JD0YnvQw/pepitos-pack-3-removebg-preview.png',
+    description: 'Pack de 3 galletitas Pepitos con chips de chocolate.',
+    stock: 25
+  },
+  {
+    id: '40',
+    name: 'Pepitos unidad',
+    price: 9.99,
+    category: 'Galletitas',
+    img: 'https://i.postimg.cc/62qb3ghX/pepitos-removebg-preview.png',
+    description: 'Galletita Pepitos con chips de chocolate.',
+    stock: 35
   }
 ]
 
