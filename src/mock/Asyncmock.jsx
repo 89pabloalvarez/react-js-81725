@@ -361,7 +361,7 @@ const productos = [
   }
 ]
 
-export const getProductos = () => {
+export const getProducts = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(productos)
