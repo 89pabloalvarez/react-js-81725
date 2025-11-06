@@ -1,24 +1,16 @@
-import logo from '../../assets/images/logo_sin_fondo.png'
-import NavBar from '../header/navBar/NavBar'
-import CartIcon from '../header/cart/CartIcon'
-import Carrousel from '../header/carousel/Carrousel'
-import '../../App.css'
+import Carousel from './carousel/Carrousel'
+import HeaderMain from './headerMain/HeaderMain'
+import HeaderSearch from './headerSearch/HeaderSearch'
 
-export default function Header() {
+// Componente Header que incluye el carrusel, el encabezado principal y la barra de búsqueda.
+const Header = () => {
   return (
-    <header className="header">
-      <div className="header-carousel">
-        <Carrousel />
-      </div>
-      <div className="header-main d-flex justify-content-between align-items-center px-4 py-2">
-        <img src={logo} alt="Logo Kiosco" className="header-logo" />
-        <div className="header-nav">
-          <NavBar />
-        </div>
-        <div className="header-cart">
-          <CartIcon />
-        </div>
-      </div>
+    <header className="header-container">
+      <Carousel />
+      <HeaderMain />
+      <HeaderSearch />
     </header>
   )
 }
+
+export default Header

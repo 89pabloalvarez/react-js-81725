@@ -1,5 +1,5 @@
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import '../../../App.css'
+import '../../../../App.css'
 
 export default function CartIcon() {
   const itemCount = 3 // hardcodeado por ahora

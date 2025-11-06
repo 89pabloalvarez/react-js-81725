@@ -1,5 +1,5 @@
 import '../../src/App.css'
-import ProductListContainer from '../components/product/ProductListContainer'
+import ProductListContainer from '../components/main/product/ProductListContainer'
 
 export default function Home() {
   return (
