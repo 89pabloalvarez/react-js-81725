@@ -7,9 +7,9 @@
   --color-grey: grey;
   --color-black: black;
   --color-red: red;
-  --color-shadow-header-footer: silver;
-  --color-bg-light-grey: gainsboro;
-  --color-bg-dark-grey: dimgray;
+  --color-grey-light: gainsboro;
+  --color-grey-medium: grey;
+  --color-grey-dark: dimgray;
   --color-page-title: mediumblue;
   --color-page-paragraph: SteelBlue;
 }
@@ -17,6 +17,12 @@
 /*////////////////////////////////////////////////////*/
 /*////////////////////COMMON STYLES///////////////////*/
 /*////////////////////////////////////////////////////*/
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 html, body {
   height: 100%;
@@ -28,7 +34,7 @@ html, body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--color-bg-light-grey);
+  background-color: var(--color-grey-light);
 }
 
 /*////////////////////////////////////////////////////*/
@@ -41,7 +47,7 @@ html, body {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  background-color: var(--color-bg-dark-grey);
+  background-color: var(--color-grey-dark);
   border-bottom-right-radius: 20px;
 }
 
@@ -215,7 +221,7 @@ html, body {
 }
 
 .search-input::placeholder {
-  color: #666 !important;
+  color: var(--color-grey-dark) !important;
   opacity: 1;
 }
 
@@ -257,14 +263,22 @@ main {
   max-width: 600px;
 }
 
+.notfound-image {
+  display: block;
+  margin: 2rem auto;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+}
+
 /*////////////////////////////////////////////////////*/
 /*///////////////////////FOOTER///////////////////////*/
 /*////////////////////////////////////////////////////*/
 
 .footer {
-  background-color: var(--color-bg-dark-grey);
+  background-color: var(--color-grey-dark);
   padding: 0 2rem;
-  border-top: 3px solid var(--color-shadow-header-footer);
+  border-top: 3px solid var(--color-grey-light);
   display: flex;
   justify-content: space-between;
   align-items: center;
