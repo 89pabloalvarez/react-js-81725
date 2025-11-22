@@ -1,5 +1,6 @@
 import { Navbar, Nav } from 'react-bootstrap'
-import '../../App.css'
+import '../../../../App.css'
+import { NavLink } from 'react-router-dom'
 
 export default function NavBar() {
   return (
@@ -7,8 +8,9 @@ export default function NavBar() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mx-auto">
-          <Nav.Link href="/home" className="nav-link">Home</Nav.Link>
-          <Nav.Link href="/about-us" className="nav-link">Acerca de Nosotros</Nav.Link>
+          <NavLink to="/home" className="nav-link">Home</NavLink>
+          <NavLink to="/about-us" className="nav-link">Acerca de Nosotros</NavLink>
+          <NavLink to="/how-to-buy" className="nav-link">Cómo Comprar</NavLink>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

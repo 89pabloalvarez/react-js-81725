@@ -7,9 +7,9 @@
   --color-grey: grey;
   --color-black: black;
   --color-red: red;
-  --color-shadow-header-footer: silver;
-  --color-bg-light-grey: gainsboro;
-  --color-bg-dark-grey: dimgray;
+  --color-grey-light: gainsboro;
+  --color-grey-medium: grey;
+  --color-grey-dark: dimgray;
   --color-page-title: mediumblue;
   --color-page-paragraph: SteelBlue;
 }
@@ -18,53 +18,140 @@
 /*////////////////////COMMON STYLES///////////////////*/
 /*////////////////////////////////////////////////////*/
 
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-/* El root debe ocupar toda la altura */
 #root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: var(--color-bg-light-grey);
+  background-color: var(--color-grey-light);
+}
+
+.content-layout {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin-top: 200px;
+  margin-bottom: 80px;
+  min-height: calc(100vh - 280px);
 }
 
 /*////////////////////////////////////////////////////*/
 /*///////////////////////HEADER///////////////////////*/
 /*////////////////////////////////////////////////////*/
 
-.header {
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.header-container {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--color-grey-dark);
+  border-bottom-right-radius: 20px;
+}
+
+.header-main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
-  padding: 0 2rem;
-  border-bottom-right-radius: 20px;
-  background-color: var(--color-bg-dark-grey);
-  border-bottom: 3px solid var(--color-shadow-header-footer);
+  height: 100px;
+  width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
 
-.header-logo {
-  height: 120px;
+@media (max-width: 768px) {
+  .header-main {
+    flex-direction: column;
+    height: auto;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
 }
+
+/*////////////////////////////////////////////////////*/
+/*///////////////////////CAROUSEL/////////////////////*/
+/*////////////////////////////////////////////////////*/
+
+.carousel-wrapper {
+  width: 100%;
+  height: 40px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.carousel-wrapper .carousel-item {
+  height: 40px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.carousel-slide {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-size: 0.9rem;
+}
+
+.carousel-slide p {
+  margin: 0;
+  line-height: 40px;
+  font-size: 0.9rem;
+}
+
+/*////////////////////////////////////////////////////*/
+/*/////////////////////HEADER-LOGO////////////////////*/
+/*////////////////////////////////////////////////////*/
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  padding-left: 1rem;
+}
+
+.logo-image {
+  height: 150px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/*////////////////////////////////////////////////////*/
+/*///////////////////////NAV-BAR//////////////////////*/
+/*////////////////////////////////////////////////////*/
 
 .header-nav {
   flex: 1;
   display: flex;
   justify-content: center;
 }
-
-.header-cart {
-  display: flex;
-  align-items: center;
-}
-
-/*////////////////////////////////////////////////////*/
-/*///////////////////////NAV-BAR//////////////////////*/
-/*////////////////////////////////////////////////////*/
 
 .navbar-custom {
   background-color: transparent;
@@ -89,6 +176,11 @@ html, body {
 /*////////////////////////CART////////////////////////*/
 /*////////////////////////////////////////////////////*/
 
+.header-cart {
+  display: flex;
+  align-items: center;
+}
+
 .cart-icon-container {
   position: relative;
   display: inline-block;
@@ -96,14 +188,14 @@ html, body {
 }
 
 .cart-icon {
-  font-size: 1.5rem;
+  font-size: 2rem;
   color: var(--color-black);
 }
 
 .cart-badge {
   position: absolute;
-  top: -6px;
-  right: -10px;
+  top: -2px;
+  right: -8px;
   background-color: var(--color-red);
   color: var(--color-white);
   font-size: 0.7rem;
@@ -118,10 +210,129 @@ html, body {
 }
 
 /*////////////////////////////////////////////////////*/
+/*/////////////////HEADER-SEARCH-PRODUCT//////////////*/
+/*////////////////////////////////////////////////////*/
+
+.header-search {
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.search-form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-input {
+  background-color: var(--color-white) !important;
+  border: 1px solid var(--color-white) !important;
+  color: var(--color-black) !important;
+  height: 40px;
+  font-size: 0.95rem;
+}
+
+.search-input::placeholder {
+  color: var(--color-grey-dark) !important;
+  opacity: 1;
+}
+
+.search-button {
+  background-color: transparent !important;
+  border: 2px solid var(--color-white) !important;
+  border-left: none !important;
+  color: var(--color-white) !important;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*////////////////////////////////////////////////////*/
+/*////////////////////CATEGORY-NAV////////////////////*/
+/*////////////////////////////////////////////////////*/
+
+.category-nav {
+  width: 15%;
+  background-color: var(--color-grey-light);
+  border-right: 2px solid var(--color-grey-dark);
+  padding: 1rem;
+  box-sizing: border-box;
+  position: fixed;
+  top: 200px;
+  bottom: 80px;
+  left: 0;
+  overflow-y: auto;
+}
+
+.category-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.category-label {
+  font-weight: 600;
+  color: var(--color-dark);
+  cursor: default;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.category-item {
+  margin-bottom: 0.5rem;
+}
+
+.category-link {
+  text-decoration: none;
+  color: var(--color-dark);
+  font-weight: 500;
+}
+
+.category-link:hover {
+  color: var(--color-primary);
+}
+
+.subcategory-list {
+  list-style: none;
+  padding-left: 1rem;
+  margin-top: 0.3rem;
+}
+
+.subcategory-item {
+  margin-bottom: 0.3rem;
+}
+
+.subcategory-link {
+  text-decoration: none;
+  color: var(--color-grey-dark);
+  font-size: 0.9rem;
+}
+
+.subcategory-link:hover {
+  color: var(--color-primary);
+}
+
+/*////////////////////////////////////////////////////*/
 /*////////////////////MAIN + PAGES////////////////////*/
 /*////////////////////////////////////////////////////*/
 
 main {
+  width: 85%;
+  margin-left: 10%;
+  padding: 2rem;
+  box-sizing: border-box;
   flex: 1;
   padding: 2rem;
 }
@@ -144,19 +355,59 @@ main {
   max-width: 600px;
 }
 
+.notfound-image {
+  display: block;
+  margin: 2rem auto;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+}
+
+.btn.rounded-circle {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.btn.rounded-circle .bi {
+  font-size: 2rem;
+  line-height: 1;
+  display: inline-block;
+  transform: translateY(-1px);
+}
+
+.btn.rounded-circle:disabled {
+  opacity: 0.6;
+}
+
+.product-count-value {
+  display: inline-block;
+  min-width: 60px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
 /*////////////////////////////////////////////////////*/
 /*///////////////////////FOOTER///////////////////////*/
 /*////////////////////////////////////////////////////*/
 
 .footer {
-  background-color: var(--color-bg-dark-grey);
+  background-color: var(--color-grey-dark);
   padding: 0 2rem;
-  border-top: 3px solid var(--color-shadow-header-footer);
+  border-top: 3px solid var(--color-grey-light);
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 80px;
   border-top-right-radius: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .footer-logo {
