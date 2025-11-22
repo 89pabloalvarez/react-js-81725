@@ -1,18 +1,31 @@
 import { useEffect, useState } from 'react'
 import { getProductById } from '../../../mock/Asyncmock'
 import ProductDetail from './ProductDetail'
+import { useParams } from 'react-router-dom'
+import { Alert } from 'react-bootstrap'
 
 const ProductDetailContainer = () => {
-  const [productDetail, setProductDetail] = useState({})
+  const [productDetail, setProductDetail] = useState(null)
   const { id } = useParams()
-  useEffect(()=>{
-    getProductById().then((res)=> setProductDetail(res)).catch((error)=> console.log(error))
-  },[id])
+
+  useEffect(() => {
+    getProductById(id)
+      .then(res => setProductDetail(res))
+      .catch(error => console.log(error))
+  }, [id])
 
   return (
-    <div>
-      <ProductDetail product={productDetail} />
-    </div>
+    <>
+      {productDetail ? (
+        <ProductDetail product={productDetail} />
+      ) : (
+        <main>
+          <Alert variant="warning" className="text-center mt-3">
+            Cargando producto...
+          </Alert>
+        </main>
+      )}
+    </>
   )
 }
 

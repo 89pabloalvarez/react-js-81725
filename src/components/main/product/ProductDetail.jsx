@@ -1,35 +1,33 @@
-import { Button, Card } from 'react-bootstrap'
 import { formatCurrency } from '../../../helper/Helper'
-import { use } from 'react'
+import ProductCount from './ProductCount'
+import { Card } from 'react-bootstrap'
 
 const ProductDetail = ({product}) => {
-    const [data, setData] = useState([])
-    const { category } = useParams()
-
-    useEffect(()=>{
-        getProductByCategory(category).then((res)=> setData(res)).catch((error)=> console.log(error))
-    },[category])
-
+  const onAdd=(count)=>{
+    console.log(`Agregaste ${count} unidades del producto: ${product.name}`)
+  }
   return (
-    <Card style={{ width: '18rem', margin: '1rem', alignItems: 'center' }}>
-      <Card.Img variant="top" src={product.img} style={{
-          width: '250px',
-          height: '250px',
-          objectFit: 'contain',
-          margin: '0 auto',
-          display: 'block',
-          alt: product.name
-        }}
-      />
-      <Card.Body>
-        <Card.Title>{product.name}</Card.Title>
-        <Card.Text>
+    <main>
+        <h2 className="mt-auto text-center fw-bold">{product.name}</h2>
+        <Card.Img
+          variant="top"
+          src={product.img}
+          style={{
+            width: '300px',
+            height: '300px',
+            objectFit: 'contain',
+            margin: '0 auto',
+            display: 'block',
+          }}
+          alt={product.name}
+        />
+        <div className="mt-auto text-center fw-bold price-text text-success fs-1">
           {formatCurrency(product.price)}
-        </Card.Text>
-        <Button variant="primary">Comprar</Button>
-      </Card.Body>
-    </Card>
+        </div>
+        <p className="mt-auto text-center fw-bold fst-italic">{product.description}</p>
+        <span className="mt-auto text-end d-block fs-5">Stock disponible: {product.stock} unidades</span>
+        <ProductCount stock={product.stock} onAdd={onAdd}/>
+    </main>
   )
 }
-
 export default ProductDetail

@@ -9,3 +9,24 @@ export const carouselLabels = [
   "Descubrí productos únicos pensados para vos.",
   "Rápido, seguro y con seguimiento en tiempo real."
 ]
+
+// Formateo la URL para convertir en minusculas y reemplazar espacios por guiones
+export const formatURL = (url) => {
+  return url.toLowerCase().replace(/\s+/g, '-');
+}
+
+// Funcion de sumar para el contador de productos.
+export const sumar = (count, stock) => {
+  if (count < stock) {
+    return count + 1
+  }
+  return count
+}
+
+// Funcion de restar para el contador de productos.
+export const restar = (count) => {
+  if (count > 0) {
+    return count - 1
+  }
+  return count
+}

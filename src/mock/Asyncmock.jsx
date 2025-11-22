@@ -1,3 +1,5 @@
+import { formatURL } from "../helper/Helper"
+
 const productos = [
   {
     id: '1',
@@ -361,6 +363,48 @@ const productos = [
   }
 ]
 
+const categories = [
+  {
+    category: 'Caramelos',
+    subCategory: [],
+    categoryPath: '/category/caramelos'
+  },
+  {
+    category: 'Alfajores',
+    subCategory: [],
+    categoryPath: '/category/alfajores'
+  },
+  {
+    category: 'Chocolates',
+    subCategory: [],
+    categoryPath: '/category/chocolates'
+  },
+  {
+    category: 'Galletitas',
+    subCategory: [],
+    categoryPath: '/category/galletitas'
+  },
+  {
+    category: 'Bebidas',
+    subCategory: [
+      {
+        name: 'Bebidas Con Alcohol',
+        categoryPath: '/category/bebidas-con-alcohol'
+      },
+      {
+        name: 'Bebidas Sin Alcohol',
+        categoryPath: '/category/bebidas-sin-alcohol'
+      }
+    ],
+    categoryPath: ''
+  },
+  {
+    category: 'Varios',
+    subCategory: [],
+    categoryPath: '/category/varios'
+  }
+]
+
 export const getProducts = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
@@ -370,9 +414,14 @@ export const getProducts = () => {
 }
 
 export const getProductById = (id) => {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(productos.find(prod => prod.id === id))
+      const productFound = productos.find(prod => prod.id === id.toString())
+      if (productFound) {
+        resolve(productFound)
+      } else {
+        reject(`ID de Producto: ${id} no encontrado`)
+      }
     }, 500)
   })
 }
@@ -380,7 +429,24 @@ export const getProductById = (id) => {
 export const getProductByCategory = (category) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(productos.filter(prod => prod.category === category))
+      resolve(productos.filter(prod => formatURL(prod.category) === formatURL(category)))
+    }, 1000)
+  })
+}
+
+export const getCategories = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(categories)
+        }, 500)
+    })
+}
+
+export const findByText = (text) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const lowerText = text.toLowerCase()
+      resolve(productos.filter(prod => prod.name.toLowerCase().includes(lowerText) || prod.description.toLowerCase().includes(lowerText)))
     }, 1000)
   })
 }
