@@ -8,9 +8,25 @@ export default function NavBar() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mx-auto">
-          <NavLink to="/home" className="nav-link">Home</NavLink>
-          <NavLink to="/about-us" className="nav-link">Acerca de Nosotros</NavLink>
-          <NavLink to="/how-to-buy" className="nav-link">Cómo Comprar</NavLink>
+          <NavLink 
+            to="/" 
+            className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"} // Si esta activo le asigno un color
+          >
+            Home
+          </NavLink>
+          <NavLink 
+            to="/about-us" 
+            className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"}
+          >
+            Acerca de Nosotros
+          </NavLink>
+          <NavLink 
+            to="/how-to-buy" 
+            className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"}
+          >
+            Cómo Comprar
+          </NavLink>
+
         </Nav>
       </Navbar.Collapse>
     </Navbar>

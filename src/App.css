@@ -144,7 +144,7 @@ header {
 }
 
 /*////////////////////////////////////////////////////*/
-/*///////////////////////NAV-BAR//////////////////////*/
+/*///////////////////HEADER-NAV-BAR///////////////////*/
 /*////////////////////////////////////////////////////*/
 
 .header-nav {
@@ -164,6 +164,7 @@ header {
   color: var(--color-white) !important;
   text-decoration: none !important;
   margin: 0 1rem;
+  transition: all 0.3s ease;
 }
 
 .nav-link:hover {
@@ -172,8 +173,16 @@ header {
   animation: growAndSpace 1s forwards ease-out;
 }
 
+.active-link {
+  color: var(--color-black) !important;
+  font-weight: bold;
+  border-bottom: 2px solid var(--color-black);
+  transform: scale(1.1);
+  letter-spacing: 0.5px;
+}
+
 /*////////////////////////////////////////////////////*/
-/*////////////////////////CART////////////////////////*/
+/*////////////////////HEADER-CART/////////////////////*/
 /*////////////////////////////////////////////////////*/
 
 .header-cart {
@@ -322,6 +331,20 @@ header {
 
 .subcategory-link:hover {
   color: var(--color-primary);
+}
+
+.active-category {
+  color: var(--color-page-title);
+  font-weight: bold;
+  border-left: 3px solid var(--color-primary);
+  padding-left: 0.5rem;
+}
+
+.active-subcategory {
+  color: var(--color-page-title);
+  font-weight: bold;
+  border-left: 2px solid var(--color-primary);
+  padding-left: 0.3rem;
 }
 
 /*////////////////////////////////////////////////////*/

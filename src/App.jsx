@@ -17,7 +17,6 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Main view="home" />} />
-            <Route path="/home" element={<Main view="home" />} />
             <Route path="*" element={<Main view="notfound" />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/how-to-buy" element={<HowToBuy />} />

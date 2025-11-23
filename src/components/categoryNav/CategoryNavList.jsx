@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import '../../App.css'
 
 export default function CategoryNavList({ categories }) {
@@ -9,9 +9,12 @@ export default function CategoryNavList({ categories }) {
         {categories.map(cat => (
           <li key={cat.category} className="category-item">
             {cat.subCategory.length === 0 ? (
-              <Link to={cat.categoryPath} className="category-link">
+              <NavLink 
+                to={cat.categoryPath} 
+                className={({ isActive }) => isActive ? "category-link active-category" : "category-link"}
+              >
                 {cat.category}
-              </Link>
+              </NavLink>
             ) : (
               <span className="category-label">{cat.category}</span>
             )}
@@ -20,9 +23,12 @@ export default function CategoryNavList({ categories }) {
               <ul className="subcategory-list">
                 {cat.subCategory.map(sub => (
                   <li key={sub.name} className="subcategory-item">
-                    <Link to={sub.categoryPath} className="subcategory-link">
+                    <NavLink 
+                      to={sub.categoryPath} 
+                      className={({ isActive }) => isActive ? "subcategory-link active-subcategory" : "subcategory-link"}
+                    >
                       {sub.name}
-                    </Link>
+                    </NavLink>
                   </li>
                 ))}
               </ul>
