@@ -1,5 +1,6 @@
 import logo from '../../assets/images/logo_dev_sin_fondo.png'
 import '../../App.css'
+const myLinkedIn = 'https://www.linkedin.com/in/pablo-alvarez-bernardez/'
 
 export default function Footer() {
   return (
@@ -10,7 +11,16 @@ export default function Footer() {
       <div className="footer-text">
         © {new Date().getFullYear()} KioscoYa. Todos los derechos reservados.
       </div>
-      <div className="footer-spacer"></div>
+      <div className="footer-spacer">
+        <a 
+          href={myLinkedIn} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="footer-link"
+        >
+          WebApp Dev LinkedIn
+        </a>
+      </div>
     </footer>
   )
 }
