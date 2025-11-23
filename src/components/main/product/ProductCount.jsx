@@ -20,9 +20,7 @@ const ProductCount = ({ stock, onAdd }) => {
       >
         <i className="bi bi-dash-lg" aria-hidden="true"></i>
       </button>
-
       <span className="product-count-value">{count}</span>
-
       <button
         type="button"
         className="btn btn-success rounded-circle"
@@ -32,7 +30,6 @@ const ProductCount = ({ stock, onAdd }) => {
       >
         <i className="bi bi-plus-lg" aria-hidden="true"></i>
       </button>
-
       <button
         type="button"
         className="btn btn-primary"

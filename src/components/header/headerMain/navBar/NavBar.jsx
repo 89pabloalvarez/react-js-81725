@@ -10,7 +10,7 @@ export default function NavBar() {
         <Nav className="mx-auto">
           <NavLink 
             to="/" 
-            className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"} // Si esta activo le asigno un color
+            className={({ isActive }) => isActive ? "nav-link active-link" : "nav-link"} // Switch entre clases activa o no activa
           >
             Home
           </NavLink>
