@@ -267,7 +267,7 @@ header {
 
 .category-nav {
   width: 15%;
-  background-color: var(--color-grey-light);
+  background-color: var(--color-grey-medium);
   border-right: 2px solid var(--color-grey-dark);
   padding: 1rem;
   box-sizing: border-box;
@@ -282,12 +282,12 @@ header {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: var(--color-primary);
+  color: var(--color-black);
 }
 
 .category-label {
   font-weight: 600;
-  color: var(--color-dark);
+  color: var(--color-black);
   cursor: default;
   display: block;
   margin-bottom: 0.3rem;
@@ -305,12 +305,12 @@ header {
 
 .category-link {
   text-decoration: none;
-  color: var(--color-dark);
+  color: var(--color-black);
   font-weight: 500;
 }
 
 .category-link:hover {
-  color: var(--color-primary);
+  color: var(--color-white);
 }
 
 .subcategory-list {
@@ -325,25 +325,25 @@ header {
 
 .subcategory-link {
   text-decoration: none;
-  color: var(--color-grey-dark);
+  color: var(--color-black);
   font-size: 0.9rem;
 }
 
 .subcategory-link:hover {
-  color: var(--color-primary);
+  color: var(--color-white);
 }
 
 .active-category {
   color: var(--color-page-title);
   font-weight: bold;
-  border-left: 3px solid var(--color-primary);
+  border-left: 3px solid var(--color-black);
   padding-left: 0.5rem;
 }
 
 .active-subcategory {
   color: var(--color-page-title);
   font-weight: bold;
-  border-left: 2px solid var(--color-primary);
+  border-left: 2px solid var(--color-black);
   padding-left: 0.3rem;
 }
 
@@ -376,6 +376,7 @@ main {
   color: var(--color-page-paragraph);
   margin: 0 auto;
   max-width: 600px;
+  margin-bottom: 1rem;
 }
 
 .notfound-image {
@@ -421,7 +422,6 @@ main {
 .footer {
   background-color: var(--color-grey-dark);
   padding: 0 2rem;
-  border-top: 3px solid var(--color-grey-light);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -438,14 +438,25 @@ main {
 }
 
 .footer-text {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   color: var(--color-white);
   text-align: center;
   flex: 1;
 }
 
 .footer-spacer {
-  width: 50px;
+  width: 80px;
+  text-align: center;
+}
+
+.footer-link {
+  color: var(--color-white);
+  text-decoration: none;
+  font-size: 0.7rem;
+}
+
+.footer-link:hover {
+  color: var(--color-primary);
 }
 
 /*////////////////////////////////////////////////////*/
