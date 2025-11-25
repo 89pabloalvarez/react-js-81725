@@ -3,10 +3,10 @@ import ProductListContainer from '../components/main/product/ProductListContaine
 
 export default function Home() {
   return (
-    <>
+    <main>
       <h1 className="page-title">¡¡Bienvenido a tu Kiosco Online!!</h1>
       <p className="page-paragraph">Encuentra los productos de las mejores marcas en ésta aplicación.</p>
       <ProductListContainer />
-    </>
+    </main>
   )
 }
