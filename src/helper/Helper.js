@@ -30,3 +30,10 @@ export const restar = (count) => {
   }
   return count
 }
+
+// Función para formatear el texto de las categorías. (saco "-" y pongo mayúscula inicial)
+export const formatCategoryText = (text) => {
+  console.log(text)
+  const withSpaces = text.replace(/-/g, ' ')
+  return withSpaces.charAt(0).toUpperCase() + withSpaces.slice(1)
+}
