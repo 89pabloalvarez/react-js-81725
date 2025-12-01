@@ -434,19 +434,19 @@ export const getProductByCategory = (category) => {
   })
 }
 
+export const getProductBySearch = (text) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const lowerText = text.toLowerCase()
+      resolve(productos.filter(prod => prod.name.toLowerCase().includes(lowerText) || prod.description.toLowerCase().includes(lowerText) || prod.category.toLowerCase().includes(lowerText)))
+    }, 1000)
+  })
+}
+
 export const getCategories = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
             resolve(categories)
         }, 500)
     })
-}
-
-export const findByText = (text) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const lowerText = text.toLowerCase()
-      resolve(productos.filter(prod => prod.name.toLowerCase().includes(lowerText) || prod.description.toLowerCase().includes(lowerText)))
-    }, 1000)
-  })
 }
