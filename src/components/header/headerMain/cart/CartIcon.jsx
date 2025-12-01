@@ -1,13 +1,15 @@
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import '../../../../App.css'
+import { useContext } from 'react'
+import { CartContext } from '../../../../context/CartContext'
 
-export default function CartIcon() {
-  const itemCount = 3 // hardcodeado por ahora
+export default function CartIcon({productsInCart}) {
+  const {cart} = useContext(CartContext)
 
   return (
     <div className="cart-icon-container">
       <i className="bi bi-cart3 cart-icon"></i>
-      <span className="cart-badge">{itemCount}</span>
+      <span className="cart-badge">{productsInCart ? productsInCart : 0}</span>
     </div>
   )
 }
