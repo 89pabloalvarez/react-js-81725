@@ -31,11 +31,19 @@ export const restar = (count) => {
   return count
 }
 
-// Función para formatear el texto de las categorías. (saco "-" y pongo mayúscula inicial)
-export const formatCategoryText = (text) => {
+// Función para sacar los guiones y reemplazarlos por espacios.
+export const replaceHyphensWithSpaces = (text) => {
+  return text.replace(/-/g, ' ')
+}
+
+// Función para poner en mayúscula la primera letra de cada palabra.
+export const capitalizeWords = (text) => {
   return text
-    .replace(/-/g, ' ')
     .split(' ')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
+}
+
+export const formatCategoryText = (text) => {
+  return capitalizeWords(replaceHyphensWithSpaces(text))
 }
