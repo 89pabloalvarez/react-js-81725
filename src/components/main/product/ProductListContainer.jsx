@@ -1,23 +1,33 @@
 import { useEffect, useState } from 'react'
-import { getProductByCategory, getProducts } from '../../../mock/Asyncmock'
+import { getProducts, getProductByCategory, getProductBySearch } from '../../../mock/Asyncmock'
 import ProductList from './ProductList'
 import { useParams } from 'react-router-dom'
 import { Alert, Spinner } from 'react-bootstrap'
+import { replaceHyphensWithSpaces } from '../../../helper/Helper'
 
 const ProductListContainer = () => {
-  const { category } = useParams()
+  const { category, searchedText } = useParams()
   const[productsData, setProductsData] = useState([])
   const [loading, setLoading] = useState(true)
 
-  useEffect(()=>{
-    setLoading(true)
-    const fetchData = category ? getProductByCategory(category) : getProducts() // Si no hay categoría, obtener todos los productos.
-    fetchData.then((res)=> setProductsData(res))
-      .catch((error)=> console.log(error))
-      .finally(() => setLoading(false))
-  },[category])
+  useEffect(() => {
+    let fetchData
 
-  if (loading) { // Le meto un spinner mientras se resuelve la promise.
+    if (category) {
+      fetchData = getProductByCategory(category)
+    } else if (searchedText) {
+      fetchData = getProductBySearch(searchedText)
+    } else {
+      fetchData = getProducts()
+    }
+
+    fetchData
+      .then((res) => setProductsData(res))
+      .catch((error) => console.log(error))
+      .finally(() => setLoading(false))
+  }, [category, searchedText])
+
+  if (loading) {
     return (
       <div className="d-flex justify-content-center mt-5">
         <Spinner animation="border" role="status">
@@ -27,12 +37,14 @@ const ProductListContainer = () => {
     )
   }
 
-  if (productsData.length === 0) { // Muestro un warning cuando se ingresó una categoría en la URL y no hay productos o si no hay ningun producto.
+  if (productsData.length === 0) {
     return (
       <Alert variant="warning" className="text-center mt-3">
         {category
           ? `No se encontraron productos para la categoría "${category}".`
-          : 'No hay productos disponibles en este momento.'}
+          : searchedText
+            ? `No se encontraron productos para la búsqueda "${replaceHyphensWithSpaces(searchedText)}".`
+            : 'No hay productos disponibles en este momento.'}
       </Alert>
     )
   }
