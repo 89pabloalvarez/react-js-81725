@@ -1,4 +1,4 @@
-import { formatURL } from "../helper/Helper"
+import { formatURL, replaceHyphensWithSpaces } from "../helper/Helper"
 
 const productos = [
   {
@@ -437,8 +437,9 @@ export const getProductByCategory = (category) => {
 export const getProductBySearch = (text) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      const lowerText = text.toLowerCase()
-      resolve(productos.filter(prod => prod.name.toLowerCase().includes(lowerText) || prod.description.toLowerCase().includes(lowerText) || prod.category.toLowerCase().includes(lowerText)))
+      const lowerText = replaceHyphensWithSpaces(text.toLowerCase())
+      console.log(lowerText)
+      resolve(productos.filter(prod => replaceHyphensWithSpaces(prod.name.toLowerCase()).includes(lowerText) || replaceHyphensWithSpaces(prod.description.toLowerCase()).includes(lowerText) || replaceHyphensWithSpaces(prod.category.toLowerCase()).includes(lowerText)))
     }, 1000)
   })
 }
