@@ -1,11 +1,16 @@
 import { formatCurrency } from '../../../helper/Helper'
 import ProductCount from './ProductCount'
 import { Card } from 'react-bootstrap'
+import { useContext } from 'react'
+import { CartContext } from '../../../context/CartContext'
 
 const ProductDetail = ({product}) => {
+  const {addProductToCart} = useContext(CartContext)
   const onAdd=(count)=>{
+    addProductToCart(product, count)
     console.log(`Agregaste ${count} unidades del producto: ${product.name}`)
   }
+
   return (
     <main>
         <h2 className="mt-auto text-center fw-bold">{product.name}</h2>
