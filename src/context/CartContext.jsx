@@ -6,6 +6,8 @@ export const CartProvider = ({children}) => {
     const [cart, setCart] = useState([])
 
     const addProductToCart = (product, quantity ) => {
+        
+            console.log(product)
         if (isInCart(product.id)){
             const updatedCart = cart.map( (item) => {
                 if (item.id === product.id){
@@ -16,6 +18,7 @@ export const CartProvider = ({children}) => {
             })
             setCart(updatedCart)
         } else {
+            console.log(product)
             setCart([...cart, {...product, quantity: quantity}])
         }
     }
@@ -24,7 +27,7 @@ export const CartProvider = ({children}) => {
         setCart(cart.filter( (product) => product.id !== productId ))
     }
 
-    const clear = () => {
+    const clearCart = () => {
         setCart([])
     }
 
@@ -33,7 +36,7 @@ export const CartProvider = ({children}) => {
     }
 
     return (
-        <CartContext.Provider value={{cart}}>
+        <CartContext.Provider value={{cart, addProductToCart, removeProductFromCart, clearCart, isInCart}}>
             {children}
         </CartContext.Provider>
     )
