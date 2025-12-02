@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import '../../src/App.css'
 import ProductListContainer from '../components/main/product/ProductListContainer'
-import { formatCategoryText } from '../helper/Helper'
+import { formatCategoryText, replaceHyphensWithSpaces } from '../helper/Helper'
 
 export default function ProductListView({title, subtitle}) {
 
@@ -10,8 +10,8 @@ export default function ProductListView({title, subtitle}) {
   // Si no viene el subtitulo es porque viene por categoría o búsqueda.
   if (!subtitle) {
     subtitle = category
-      ? `Categoría seleccionada: ${formatCategoryText(category)}`
-      : (searchedText ? `Texto buscado: "${searchedText}"` : null)
+      ? `${formatCategoryText(category)}`
+      : (searchedText ? `"${replaceHyphensWithSpaces(searchedText)}"` : null)
   }
 
   return (
