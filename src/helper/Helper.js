@@ -36,6 +36,11 @@ export const replaceHyphensWithSpaces = (text) => {
   return text.replace(/-/g, ' ')
 }
 
+// Inverso a lo anterior, función para sacar los espacios y reemplazarlos por guiones.
+export const replaceSpacesWithHyphens = (text) => {
+  return text.replace(/ /g, '-')
+}
+
 // Función para poner en mayúscula la primera letra de cada palabra.
 export const capitalizeWords = (text) => {
   return text
