@@ -1,6 +1,6 @@
 import { formatURL, replaceHyphensWithSpaces } from "../helper/Helper"
 
-const productos = [
+const products = [
   {
     id: '1',
     name: 'Yerba CBSé Guaraná 500g',
@@ -408,7 +408,7 @@ const categories = [
 export const getProducts = () => {
     return new Promise((resolve) => {
         setTimeout(() => {
-            resolve(productos)
+            resolve(products)
         }, 1500)
     })
 }
@@ -416,7 +416,7 @@ export const getProducts = () => {
 export const getProductById = (id) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      const productFound = productos.find(prod => prod.id === id.toString())
+      const productFound = products.find(prod => prod.id === id.toString())
       if (productFound) {
         resolve(productFound)
       } else {
@@ -429,7 +429,7 @@ export const getProductById = (id) => {
 export const getProductByCategory = (category) => {
   return new Promise((resolve) => {
     setTimeout(() => {
-      resolve(productos.filter(prod => formatURL(prod.category) === formatURL(category)))
+      resolve(products.filter(prod => formatURL(prod.category) === formatURL(category)))
     }, 1000)
   })
 }
@@ -439,7 +439,7 @@ export const getProductBySearch = (text) => {
     setTimeout(() => {
       const lowerText = replaceHyphensWithSpaces(text.toLowerCase())
       console.log(lowerText)
-      resolve(productos.filter(prod => replaceHyphensWithSpaces(prod.name.toLowerCase()).includes(lowerText) || replaceHyphensWithSpaces(prod.description.toLowerCase()).includes(lowerText) || replaceHyphensWithSpaces(prod.category.toLowerCase()).includes(lowerText)))
+      resolve(products.filter(prod => replaceHyphensWithSpaces(prod.name.toLowerCase()).includes(lowerText) || replaceHyphensWithSpaces(prod.description.toLowerCase()).includes(lowerText) || replaceHyphensWithSpaces(prod.category.toLowerCase()).includes(lowerText)))
     }, 1000)
   })
 }
