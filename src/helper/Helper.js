@@ -3,11 +3,6 @@ export const formatCurrency = (amount) => {
     return `$${amount.toFixed(2).replace('.', ',')}`;
 }
 
-// Formateo la URL para convertir en minusculas y reemplazar espacios por guiones
-export const formatURL = (url) => {
-  return url.toLowerCase().replace(/\s+/g, '-');
-}
-
 // Funcion de sumar para el contador de productos.
 export const sumar = (count, stock) => {
   if (count < stock) {
