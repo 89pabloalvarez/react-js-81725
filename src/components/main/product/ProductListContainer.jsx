@@ -17,7 +17,7 @@ const ProductListContainer = () => {
     if (category) {
       fetchData = getProductsByCategory(category)
     } else if (searchedText) {
-      fetchData = getProductsBySearch(replaceHyphensWithSpaces(searchedText));
+      fetchData = getProductsBySearch(searchedText);
     } else {
       fetchData = getAllProducts()
     }
