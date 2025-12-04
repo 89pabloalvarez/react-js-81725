@@ -1,29 +1,28 @@
 import { useEffect, useState } from 'react'
-import { getProducts, getProductByCategory, getProductBySearch } from '../../../mock/Asyncmock'
 import ProductList from './ProductList'
 import { useParams } from 'react-router-dom'
 import { Alert, Spinner } from 'react-bootstrap'
 import { replaceHyphensWithSpaces } from '../../../helper/Helper'
+import { getAllProducts, getProductsByCategory } from '../../../service/productService'
 
 const ProductListContainer = () => {
   const { category, searchedText } = useParams()
   const[productsData, setProductsData] = useState([])
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    let fetchData
+    setLoading(true)
 
+    let fetchData;
     if (category) {
-      fetchData = getProductByCategory(category)
-    } else if (searchedText) {
-      fetchData = getProductBySearch(searchedText)
+      fetchData = getProductsByCategory(category)
     } else {
-      fetchData = getProducts()
+      fetchData = getAllProducts()
     }
 
     fetchData
-      .then((res) => setProductsData(res))
-      .catch((error) => console.log(error))
+      .then(res => setProductsData(res))
+      .catch(err => console.error(err))
       .finally(() => setLoading(false))
   }, [category, searchedText])
 
