@@ -1,4 +1,4 @@
-export const categorias = [
+export const categories = [
   {
     category: 'Caramelos',
     subCategory: [],
@@ -38,4 +38,10 @@ export const categorias = [
     subCategory: [],
     categoryPath: '/category/varios'
   }
+]
+
+export const carouselLabels = [
+  "Sean bienvenidos a la drugstore en línea N°1 del país!!",
+  "Descubrí productos únicos pensados para vos.",
+  "Rápido, seguro y con seguimiento en tiempo real."
 ]
