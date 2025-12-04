@@ -3,7 +3,7 @@ import ProductList from './ProductList'
 import { useParams } from 'react-router-dom'
 import { Alert, Spinner } from 'react-bootstrap'
 import { replaceHyphensWithSpaces } from '../../../helper/Helper'
-import { getAllProducts, getProductsByCategory } from '../../../service/productService'
+import { getAllProducts, getProductsByCategory, getProductsBySearch } from '../../../service/productService'
 
 const ProductListContainer = () => {
   const { category, searchedText } = useParams()
@@ -16,6 +16,8 @@ const ProductListContainer = () => {
     let fetchData;
     if (category) {
       fetchData = getProductsByCategory(category)
+    } else if (searchedText) {
+      fetchData = getProductsBySearch(replaceHyphensWithSpaces(searchedText));
     } else {
       fetchData = getAllProducts()
     }
