@@ -45,3 +45,5 @@ export const carouselLabels = [
   "Descubrí productos únicos pensados para vos.",
   "Rápido, seguro y con seguimiento en tiempo real."
 ]
+
+export const PROJECTNAME = 'kiosco'
