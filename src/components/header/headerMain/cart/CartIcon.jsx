@@ -8,7 +8,7 @@ export default function CartIcon({productsInCart}) {
 
   return (
     <div className="cart-icon-container">
-      <i className="bi bi-cart3 cart-icon"></i>
+      <i className="bi bi-cart3 cart-icon-header"></i>
       <span className="cart-badge">{productsInCart ? productsInCart : 0}</span>
     </div>
   )

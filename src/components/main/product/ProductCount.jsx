@@ -10,7 +10,7 @@ const ProductCount = ({ stock, onAdd }) => {
   const handleRestar = () => setCount(restar(count))
 
   return (
-    <div className="d-flex align-items-center gap-3">
+    <div className="d-flex align-items-center">
       <button
         type="button"
         className="btn btn-danger rounded-circle"
@@ -32,11 +32,13 @@ const ProductCount = ({ stock, onAdd }) => {
       </button>
       <button
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary rounded-circle cart-icon-container-secondary"
         onClick={() => onAdd(count)}
         disabled={stock === 0 || count === 0}
+        aria-label="Agregar al carrito"
       >
-        Agregar al Carrito
+        <i className="bi bi-cart3 cart-icon-detail"></i>
+        <span className="cart-plus-icon">+</span>
       </button>
     </div>
   )
