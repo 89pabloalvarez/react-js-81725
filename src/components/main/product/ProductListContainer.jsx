@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import ProductList from './ProductList'
 import { useParams } from 'react-router-dom'
-import { Alert, Spinner } from 'react-bootstrap'
 import { replaceHyphensWithSpaces } from '../../../helper/Helper'
 import { getAllProducts, getProductsByCategory, getProductsBySearch } from '../../../service/productService'
+import LoaderComponent, { CustomAlert } from '../LoaderComponent'
 
 const ProductListContainer = () => {
   const { category, searchedText } = useParams()
@@ -12,7 +12,6 @@ const ProductListContainer = () => {
 
   useEffect(() => {
     setLoading(true)
-
     let fetchData;
     if (category) {
       fetchData = getProductsByCategory(category)
@@ -21,7 +20,6 @@ const ProductListContainer = () => {
     } else {
       fetchData = getAllProducts()
     }
-
     fetchData
       .then(res => setProductsData(res))
       .catch(err => console.error(err))
@@ -29,25 +27,18 @@ const ProductListContainer = () => {
   }, [category, searchedText])
 
   if (loading) {
-    return (
-      <div className="d-flex justify-content-center mt-5">
-        <Spinner animation="border" role="status">
-          <span className="visually-hidden">Cargando productos...</span>
-        </Spinner>
-      </div>
-    )
+    return <LoaderComponent message="Cargando productos..." />
   }
 
   if (productsData.length === 0) {
-    return (
-      <Alert variant="warning" className="text-center mt-3">
-        {category
-          ? `No se encontraron productos para la categoría "${category}".`
-          : searchedText
-            ? `No se encontraron productos para la búsqueda "${replaceHyphensWithSpaces(searchedText)}".`
-            : 'No hay productos disponibles en este momento.'}
-      </Alert>
-    )
+    return CustomAlert({
+      variant: "danger",
+      message: category
+        ? `No se encontraron productos para la categoría "${category}".`
+        : searchedText
+          ? `No se encontraron productos para la búsqueda "${replaceHyphensWithSpaces(searchedText)}".`
+          : 'No hay productos disponibles en este momento.'
+    })
   }
 
   return (
