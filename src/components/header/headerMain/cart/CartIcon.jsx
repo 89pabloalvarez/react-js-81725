@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom'
 
 export default function CartIcon({productsInCart}) {
   const {cart} = useContext(CartContext)
+  const isEmpty = !cart || cart.length === 0
 
   return (
     <div className="cart-icon-container">
-      <Link to="/cart">
+      <Link to={isEmpty ? "/cart-empty" : "/cart"}>
         <i className="bi bi-cart3 cart-icon-header"></i>
         <span className="cart-badge">{productsInCart ? productsInCart : 0}</span>
       </Link>

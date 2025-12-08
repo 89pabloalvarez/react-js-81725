@@ -29,7 +29,7 @@ function App() {
               <Route path="/product/:id" element={<ProductDetailContainer />} />
               <Route path="/searched-product/:searchedText" element={<ProductListView title={'Resultados de su búsqueda con el texto:'} />} />
               <Route path="/cart" element={<CardContainer />} />
-              <Route path="/empty-cart" element={<CartEmpty />} />
+              <Route path="/cart-empty" element={<CartEmpty />} />
             </Routes>
           </main>
         </div>
