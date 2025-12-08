@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import emptyCartImg from '../../../../assets/animatedImages/pasto-desierto.gif'
-import '../../../../App.css'
+import emptyCartImg from '../assets/animatedImages/pasto-desierto.gif'
+import '../App.css'
 
 const CartEmpty = () => {
   return (

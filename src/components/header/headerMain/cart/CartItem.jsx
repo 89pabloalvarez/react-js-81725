@@ -1,1 +1,0 @@
-//Aca se desarrollará cada item del dropdown del carrito, mostrando la info del producto agregado.

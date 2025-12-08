@@ -457,9 +457,10 @@ main {
 
 .emptycart-image {
   display: block;
-  margin: 2rem 0;
-  width: 100%;
+  width: 100vw;
   height: 500px;
+  position: relative;
+  left: -8.7%;
 }
 
 /*////////////////////////////////////////////////////*/
