@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound'
 import ProductListView from './pages/ProductListView'
 import ProductDetailContainer from './components/main/product/ProductDetailContainer'
 import CardContainer from './components/header/headerMain/cart/CartContainer'
+import CartEmpty from './components/header/headerMain/cart/CartEmpty'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import { CartProvider } from './context/CartContext'
@@ -28,6 +29,7 @@ function App() {
               <Route path="/product/:id" element={<ProductDetailContainer />} />
               <Route path="/searched-product/:searchedText" element={<ProductListView title={'Resultados de su búsqueda con el texto:'} />} />
               <Route path="/cart" element={<CardContainer />} />
+              <Route path="/empty-cart" element={<CartEmpty />} />
             </Routes>
           </main>
         </div>
