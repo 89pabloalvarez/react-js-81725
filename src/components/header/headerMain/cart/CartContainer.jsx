@@ -1,8 +1,9 @@
-import React from 'react'
 
 const CartContainer = () => {
   return (
-    <div>CartContainer</div>
+    <main>
+      <h1>¡¡Bienvenido a tu carrito de compras!!</h1>
+    </main>
   )
 }
 

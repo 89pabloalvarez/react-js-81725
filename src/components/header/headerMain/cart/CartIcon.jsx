@@ -2,14 +2,17 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 import '../../../../App.css'
 import { useContext } from 'react'
 import { CartContext } from '../../../../context/CartContext'
+import { Link } from 'react-router-dom'
 
 export default function CartIcon({productsInCart}) {
   const {cart} = useContext(CartContext)
 
   return (
     <div className="cart-icon-container">
-      <i className="bi bi-cart3 cart-icon-header"></i>
-      <span className="cart-badge">{productsInCart ? productsInCart : 0}</span>
+      <Link to="/cart">
+        <i className="bi bi-cart3 cart-icon-header"></i>
+        <span className="cart-badge">{productsInCart ? productsInCart : 0}</span>
+      </Link>
     </div>
   )
 }
