@@ -32,6 +32,11 @@ export const CartProvider = ({children}) => {
         return cart.some( (product) => product.id === id )
     }
 
+    const cartQuantity = ()=>{
+        // return cart.reduce((acc , prod)=> acc += prod.quantity, 0) // Ésto me suma todas las cantidades de productos en el carrito. Solo quiero la cantidad de productos diferentes en el carrito.
+        return cart.length // Ésto me da la cantidad de productos diferentes en el carrito que es lo que busco en mi aplicación.
+    }
+
     const productQuantity = (id)=>{
         const productInCart = cart.find((prod)=> prod.id === id)
         if(productInCart){
@@ -60,7 +65,7 @@ export const CartProvider = ({children}) => {
     }
 
     return (
-        <CartContext.Provider value={{cart, addProductToCart, removeProductFromCart, clearCart, isInCart, productQuantity, productWithTaxes, totalWithTaxes, removeProduct}}>
+        <CartContext.Provider value={{cart, addProductToCart, removeProductFromCart, clearCart, isInCart, productQuantity, productWithTaxes, totalWithTaxes, removeProduct, cartQuantity}}>
             {children}
         </CartContext.Provider>
     )

@@ -5,14 +5,14 @@ import { CartContext } from '../../../../context/CartContext'
 import { Link } from 'react-router-dom'
 
 export default function CartIcon() {
-  const {cart} = useContext(CartContext)
+  const {cart, cartQuantity} = useContext(CartContext)
   const isEmpty = !cart || cart.length === 0
 
   return (
     <div className="cart-icon-container">
       <Link to={isEmpty ? "/cart-empty" : "/cart"}>
         <i className="bi bi-cart3 cart-icon-header"></i>
-        <span className="cart-badge">{cart.length}</span>
+        <span className="cart-badge">{cartQuantity()}</span>
       </Link>
     </div>
   )
