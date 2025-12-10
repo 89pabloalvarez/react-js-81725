@@ -6,7 +6,7 @@ import HowToBuy from './pages/HowToBuy'
 import NotFound from './pages/NotFound'
 import ProductListView from './pages/ProductListView'
 import ProductDetailContainer from './components/main/product/ProductDetailContainer'
-import CardContainer from './components/header/headerMain/cart/CartContainer'
+import CartContainer from './components/header/headerMain/cart/CartContainer'
 import CartEmpty from './pages/CartEmpty'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
@@ -28,7 +28,7 @@ function App() {
               <Route path="/category/:category" element={<ProductListView title={'Usted se encuentra en la categoría:'} />} />
               <Route path="/product/:id" element={<ProductDetailContainer />} />
               <Route path="/searched-product/:searchedText" element={<ProductListView title={'Resultados de su búsqueda con el texto:'} />} />
-              <Route path="/cart" element={<CardContainer />} />
+              <Route path="/cart" element={<CartContainer />} />
               <Route path="/cart-empty" element={<CartEmpty />} />
             </Routes>
           </main>
