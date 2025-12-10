@@ -1,5 +1,5 @@
 import { Carousel } from 'react-bootstrap'
-import { carouselLabels } from '../../../helper/Helper'
+import { carouselLabels } from '../../../helper/constants'
 import '../../../App.css'
 
 const Carrousel = () => {

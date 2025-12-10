@@ -1,11 +1,24 @@
 import { formatCurrency } from '../../../helper/Helper'
 import ProductCount from './ProductCount'
 import { Card } from 'react-bootstrap'
+import { useContext } from 'react'
+import { CartContext } from '../../../context/CartContext'
+import Swal from 'sweetalert2'
 
 const ProductDetail = ({product}) => {
+  const {addProductToCart} = useContext(CartContext)
   const onAdd=(count)=>{
-    console.log(`Agregaste ${count} unidades del producto: ${product.name}`)
+    addProductToCart(product, count)
+    Swal.fire({
+      title: '¡Producto agregado al carrito!',
+      text: `Agregaste ${count} unidades del producto: ${product.name}`,
+      icon: 'success',
+      showCancelButton: false,
+      showConfirmButton: false,
+      timer: 1500
+    })
   }
+
   return (
     <main>
         <h2 className="mt-auto text-center fw-bold">{product.name}</h2>

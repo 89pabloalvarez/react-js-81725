@@ -1,34 +1,40 @@
 import Header from './components/header/Header'
 import CategoryNavContainer from './components/categoryNav/CategoryNavContainer'
-import Main from './components/main/Main'
 import Footer from './components/footer/Footer'
 import AboutUs from './pages/AboutUs'
 import HowToBuy from './pages/HowToBuy'
 import NotFound from './pages/NotFound'
+import ProductListView from './pages/ProductListView'
 import ProductDetailContainer from './components/main/product/ProductDetailContainer'
+import CartContainer from './components/header/headerMain/cart/CartContainer'
+import CartEmpty from './pages/CartEmpty'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
+import { CartProvider } from './context/CartContext'
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <div className="content-layout">
-        <CategoryNavContainer />
-        <main>
-          <Routes>
-            <Route path="/" element={<Main view="home" />} />
-            <Route path="*" element={<NotFound />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/how-to-buy" element={<HowToBuy />} />
-            <Route path="/category/:category" element={<Main view="home" />} />
-            <Route path="/product/:id" element={<ProductDetailContainer />} />
-            {/* funcion que definiré para la entrega final, que se ejecutará al usar el buscador del header. por ahora seguirá siendo not found */}
-            <Route path="/searched-product/:searched-text" element={<NotFound />} />
-          </Routes>
-        </main>
-      </div>
-      <Footer />
+      <CartProvider>
+        <Header />
+        <div className="content-layout">
+          <CategoryNavContainer />
+          <main>
+            <Routes>
+              <Route path="/" element={<ProductListView title={'¡¡Bienvenido a tu Kiosco Online!!'} subtitle={'Encuentra los productos de las mejores marcas en ésta aplicación.'} />} />
+              <Route path="*" element={<NotFound />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/how-to-buy" element={<HowToBuy />} />
+              <Route path="/category/:category" element={<ProductListView title={'Usted se encuentra en la categoría:'} />} />
+              <Route path="/product/:id" element={<ProductDetailContainer />} />
+              <Route path="/searched-product/:searchedText" element={<ProductListView title={'Resultados de su búsqueda con el texto:'} />} />
+              <Route path="/cart" element={<CartContainer />} />
+              <Route path="/cart-empty" element={<CartEmpty />} />
+            </Routes>
+          </main>
+        </div>
+        <Footer />
+      </CartProvider>
     </BrowserRouter>
   )
 }

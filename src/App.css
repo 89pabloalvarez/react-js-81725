@@ -7,6 +7,7 @@
   --color-grey: grey;
   --color-black: black;
   --color-red: red;
+  --color-green: green;
   --color-grey-light: gainsboro;
   --color-grey-medium: grey;
   --color-grey-dark: dimgray;
@@ -47,6 +48,45 @@ html, body {
 }
 
 /*////////////////////////////////////////////////////*/
+/*///////////////////////CAROUSEL/////////////////////*/
+/*////////////////////////////////////////////////////*/
+
+.carousel-wrapper {
+  width: 100%;
+  height: 40px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.carousel-wrapper .carousel-item {
+  height: 40px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.carousel-slide {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  font-size: 0.9rem;
+}
+
+.carousel-slide p {
+  margin: 0;
+  line-height: 40px;
+  font-size: 0.9rem;
+}
+
+/*////////////////////////////////////////////////////*/
 /*///////////////////////HEADER///////////////////////*/
 /*////////////////////////////////////////////////////*/
 
@@ -84,45 +124,6 @@ header {
     gap: 0.5rem;
     padding: 0.5rem;
   }
-}
-
-/*////////////////////////////////////////////////////*/
-/*///////////////////////CAROUSEL/////////////////////*/
-/*////////////////////////////////////////////////////*/
-
-.carousel-wrapper {
-  width: 100%;
-  height: 40px;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.carousel-wrapper .carousel-item {
-  height: 40px !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.carousel-slide {
-  height: 40px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  background-color: var(--color-black);
-  color: var(--color-white);
-  font-size: 0.9rem;
-}
-
-.carousel-slide p {
-  margin: 0;
-  line-height: 40px;
-  font-size: 0.9rem;
 }
 
 /*////////////////////////////////////////////////////*/
@@ -182,7 +183,7 @@ header {
 }
 
 /*////////////////////////////////////////////////////*/
-/*////////////////////HEADER-CART/////////////////////*/
+/*///////////////////////CART/////////////////////////*/
 /*////////////////////////////////////////////////////*/
 
 .header-cart {
@@ -192,11 +193,15 @@ header {
 
 .cart-icon-container {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
+  width: 40px;
+  height: 40px;
 }
 
-.cart-icon {
+.cart-icon-header {
   font-size: 2rem;
   color: var(--color-black);
 }
@@ -212,7 +217,7 @@ header {
   border-radius: 50%;
 }
 
-.cart-icon:hover {
+.cart-icon-header:hover {
   color: var(--color-white) !important;
   text-decoration: underline;
   animation: growAndSpace 0.6s forwards ease-out;
@@ -397,7 +402,8 @@ main {
   line-height: 1;
 }
 
-.btn.rounded-circle .bi {
+.btn.rounded-circle .bi.bi-plus-lg,
+.btn.rounded-circle .bi.bi-dash-lg {
   font-size: 2rem;
   line-height: 1;
   display: inline-block;
@@ -413,6 +419,48 @@ main {
   min-width: 60px;
   text-align: center;
   font-size: 1.5rem;
+}
+
+.cart-icon-container-secondary {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  margin-left: 70px;
+}
+
+.cart-icon-detail {
+  font-size: 1.4rem;
+  width: 20px;
+  height: 20px;
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-plus-icon {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(40%, -80%);
+  background-color: var(--color-green);
+  color: var(--color-white);
+  font-size: 1rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.emptycart-image {
+  display: block;
+  width: 100vw;
+  height: 500px;
+  position: relative;
+  left: -8.7%;
 }
 
 /*////////////////////////////////////////////////////*/
