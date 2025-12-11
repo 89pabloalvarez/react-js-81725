@@ -33,8 +33,8 @@ export const CartProvider = ({children}) => {
     }
 
     const cartQuantity = ()=>{
-        // return cart.reduce((acc , prod)=> acc += prod.quantity, 0) // Ésto me suma todas las cantidades de productos en el carrito. Solo quiero la cantidad de productos diferentes en el carrito.
-        return cart.length // Ésto me da la cantidad de productos diferentes en el carrito que es lo que busco en mi aplicación.
+        return cart.reduce((acc , prod)=> acc += prod.quantity, 0) // Todas las unidades que tengo en el carrito (para cumplir con la consigna de la entrega final).
+        // return cart.length // Ésto me da la cantidad de productos diferentes en el carrito que es lo que busco en mi aplicación.
     }
 
     const productQuantity = (id)=>{
