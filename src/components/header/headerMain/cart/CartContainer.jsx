@@ -3,6 +3,7 @@ import { CartContext } from '../../../../context/CartContext'
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import '../../../../App.css'
+import formatCurrency from '../../../../helper/Helper'
 
 const CartContainer = () => {
   const {cart, setCart, cartQuantity, removeProductFromCart, clear, totalWithTaxes}= useContext(CartContext)
@@ -45,20 +46,20 @@ const CartContainer = () => {
           </tr>
         </thead>
         <tbody>
-          {cart.map((compra) => (
-            <tr key={compra.id}>
+          {cart.map((product) => (
+            <tr key={product.id}>
               <td>
-                <img src={compra.img} alt={compra.name} className="cart-img" />
+                <img src={product.img} alt={product.name} className="cart-img" />
               </td>
-              <td>{compra.name}</td>
-              <td>${compra.price},00</td>
-              <td>{compra.quantity}</td>
-              <td>${compra.quantity * compra.price},00</td>
+              <td>{product.name}</td>
+              <td><div className='text-success'>${formatCurrency(product.price)}</div></td>
+              <td>{product.quantity}</td>
+              <td>${product.quantity * product.price},00</td>
               <td className="cart-remove-cell">
                 <button
                   type="button"
                   className="btn btn-danger rounded-circle cart-icon-btn"
-                  onClick={() => handleRemoveProduct(compra.id)}
+                  onClick={() => handleRemoveProduct(product.id)}
                   aria-label="Eliminar producto"
                 >
                   <i className="bi bi-trash" aria-hidden="true"></i>

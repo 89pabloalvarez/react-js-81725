@@ -60,12 +60,8 @@ export const CartProvider = ({children}) => {
         return subtotal * 1.21
     }
 
-    const removeProduct = (id)=>{
-        setCart(cart.filter((prod)=> prod.id !== id))
-    }
-
     return (
-        <CartContext.Provider value={{cart, addProductToCart, removeProductFromCart, clearCart, isInCart, productQuantity, productWithTaxes, totalWithTaxes, removeProduct, cartQuantity}}>
+        <CartContext.Provider value={{cart, setCart, addProductToCart, removeProductFromCart, clearCart, isInCart, productQuantity, productWithTaxes, totalWithTaxes, cartQuantity}}>
             {children}
         </CartContext.Provider>
     )

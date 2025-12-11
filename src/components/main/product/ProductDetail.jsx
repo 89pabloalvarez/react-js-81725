@@ -1,21 +1,31 @@
 import { formatCurrency } from '../../../helper/Helper'
 import ProductCount from './ProductCount'
 import { Card } from 'react-bootstrap'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { CartContext } from '../../../context/CartContext'
+import { useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 const ProductDetail = ({product}) => {
   const {addProductToCart} = useContext(CartContext)
+  const [showProductCount, setShowProductCount] = useState(true)
+  const navigate = useNavigate()
   const onAdd=(count)=>{
-    addProductToCart(product, count)
+    setShowProductCount(false)
     Swal.fire({
-      title: '¡Producto agregado al carrito!',
-      text: `Agregaste ${count} unidades del producto: ${product.name}`,
-      icon: 'success',
-      showCancelButton: false,
-      showConfirmButton: false,
-      timer: 1500
+        icon:'question',
+        title:'¿Agregado al carrito?',
+        text: `Deseas agregar ${count === 1 ? count + ' unidad': count + ' unidades'} del producto: ${product.name}`,
+        showDenyButton:true,
+        denyButtonText:'No, volver.',
+        confirmButtonText:'Si, ir al carrito.'
+    }).then((result)=>{
+      if(result.isConfirmed){
+        addProductToCart(product, count)
+        navigate('/cart')
+      } else {
+        setShowProductCount(true)
+      }
     })
   }
 
@@ -39,7 +49,9 @@ const ProductDetail = ({product}) => {
         </div>
         <p className="mt-auto text-center fw-bold fst-italic">{product.description}</p>
         <span className="mt-auto text-end d-block fs-5">Stock disponible: {product.stock} unidades</span>
-        <ProductCount stock={product.stock} onAdd={onAdd}/>
+        {showProductCount && (
+        <ProductCount stock={product.stock} onAdd={onAdd} />
+      )}
     </main>
   )
 }
