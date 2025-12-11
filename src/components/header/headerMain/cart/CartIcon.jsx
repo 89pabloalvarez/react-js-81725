@@ -4,7 +4,7 @@ import { useContext } from 'react'
 import { CartContext } from '../../../../context/CartContext'
 import { Link } from 'react-router-dom'
 
-export default function CartIcon() {
+const CartIcon = () => {
   const {cart, cartQuantity} = useContext(CartContext)
   const isEmpty = !cart || cart.length === 0
 
@@ -17,3 +17,5 @@ export default function CartIcon() {
     </div>
   )
 }
+
+export default CartIcon

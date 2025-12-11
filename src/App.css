@@ -9,6 +9,7 @@
   --color-red: red;
   --color-green: green;
   --color-grey-light: gainsboro;
+  --color-grey-lighter: #ccc;
   --color-grey-medium: grey;
   --color-grey-dark: dimgray;
   --color-page-title: mediumblue;
@@ -223,6 +224,69 @@ header {
   animation: growAndSpace 0.6s forwards ease-out;
 }
 
+.cart-container {
+  padding: 2rem;
+}
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+.cart-table th,
+.cart-table td {
+  border-bottom: 1px solid var(--color-grey-lighter);
+  text-align: center;
+  padding: 1rem;
+}
+
+.cart-img {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+.cart-totals {
+  text-align: right;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.cart-table tr {
+  border-bottom: 2px solid var(--color-grey-lighter);
+}
+
+.cart-table td {
+  text-align: center;
+  padding: 1rem;
+  vertical-align: middle;
+}
+
+.cart-remove-cell {
+  text-align: center;
+}
+
+.cart-icon-btn {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.cart-icon-btn i {
+  font-size: 1.2rem;
+}
+
 /*////////////////////////////////////////////////////*/
 /*/////////////////HEADER-SEARCH-PRODUCT//////////////*/
 /*////////////////////////////////////////////////////*/
@@ -380,7 +444,7 @@ main {
   text-align: center;
   color: var(--color-page-paragraph);
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 800px;
   margin-bottom: 1rem;
 }
 
