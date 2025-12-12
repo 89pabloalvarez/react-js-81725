@@ -47,3 +47,4 @@ export const carouselLabels = [
 ]
 
 export const PROJECTNAME = 'kiosco'
+export const IVA = 0.21

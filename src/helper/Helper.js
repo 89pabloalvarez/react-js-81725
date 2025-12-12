@@ -1,6 +1,13 @@
+import { IVA } from "./constants"
+
 // Formateo el importe que viene con formato decimal con "." a decimal con ","
 export const formatCurrency = (amount) => {
-  return `$${amount.toFixed(2).replace('.', ',')}`;
+  return `$${amount.toFixed(2).replace('.', ',')}`
+}
+
+export const formatCurrencyWithTaxes = (amount) => {
+  const amountWithTaxes = amount * (1 + IVA)
+  return formatCurrency(amountWithTaxes)
 }
 
 // Funcion de sumar para el contador de productos.
