@@ -6,27 +6,36 @@ import '../../../../App.css'
 import { formatCurrency } from '../../../../helper/Helper'
 
 const CartContainer = () => {
-  const {cart, setCart, cartQuantity, removeProductFromCart, clear, totalWithTaxes}= useContext(CartContext)
+  const {cart, setCart, clearCart, totalToPay, totalWithTaxes}= useContext(CartContext)
   const navigate = useNavigate()
 
-  const handleRemoveProduct = (id) => {
+  const handleRemoveProduct = (id) => { // Eliminar uno por uno.
     const newCart = cart.filter(product => product.id !== id)
     setCart(newCart)
 
     const newQuantity = newCart.reduce((acc, prod) => acc + prod.quantity, 0)
     if (newQuantity === 0) {
-      Swal.fire({
-        title: "¡Carrito vacío!",
-        icon: "warning",
-        timer: 3000,
-        text: "Te redirigimos a la página principal.",
-        showCloseButton: false,
-        showCancelButton: false,
-        showConfirmButton: false
-      }).then(() => {
-        navigate('/')
-      })
+      showEmptyCartAlert()
     }
+  }
+
+  const handleRemovePoroducts = () => { // Eliminar todos.
+    clearCart()
+    showEmptyCartAlert()
+  }
+
+  const showEmptyCartAlert = () => { // Alerta de carrito vacío.
+    Swal.fire({
+      title: "¡Carrito vacío!",
+      icon: "warning",
+      timer: 3000,
+      text: "Te redirigimos a la página principal.",
+      showCloseButton: false,
+      showCancelButton: false,
+      showConfirmButton: false
+    }).then(() => {
+      navigate('/')
+    })
   }
 
   return (
@@ -51,10 +60,10 @@ const CartContainer = () => {
               <td>
                 <img src={product.img} alt={product.name} className="cart-img" />
               </td>
-              <td>{product.name}</td>
-              <td><div className='text-success'>${formatCurrency(product.price)}</div></td>
-              <td>{product.quantity}</td>
-              <td>${product.quantity * product.price},00</td>
+              <td><div className='fw-bold'>{product.name}</div></td>
+              <td><div className='fw-bold text-success'>{formatCurrency(product.price)}</div></td>
+              <td><div className='fw-bold'>{product.quantity}</div></td>
+              <td><div className='fw-bold text-success'>{formatCurrency(product.quantity * product.price)}</div></td>
               <td className="cart-remove-cell">
                 <button
                   type="button"
@@ -69,16 +78,15 @@ const CartContainer = () => {
           ))}
         </tbody>
       </table>
-
       <div className="cart-totals">
-        <p><strong>Precio Total:</strong> ${cart.reduce((acc, prod) => acc + prod.price * prod.quantity, 0)},00</p>
-        <p><strong>Precio Total con impuestos:</strong> ${totalWithTaxes()},00</p>
+        <p><strong>Precio Total:</strong><div className='fw-bold text-success'>{formatCurrency(totalToPay())}</div></p>
+        <p><strong>Precio Total con impuestos:</strong><div className='fw-bold text-success'>{formatCurrency(totalWithTaxes())}</div></p>
       </div>
-
       <div className="cart-actions">
-        <button className="btn btn-danger" onClick={clear}>Vaciar carrito</button>
+        <button className="btn btn-danger" onClick={handleRemovePoroducts}>Vaciar carrito</button>
         <Link className="btn btn-success" to="/checkout">Terminar Compra</Link>
       </div>
+      <p className="page-paragraph"><strong>IVA 21%</strong> </p>
     </main>
   )
 }
