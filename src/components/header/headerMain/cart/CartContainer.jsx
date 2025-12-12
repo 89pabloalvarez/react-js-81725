@@ -3,7 +3,7 @@ import { CartContext } from '../../../../context/CartContext'
 import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import '../../../../App.css'
-import formatCurrency from '../../../../helper/Helper'
+import { formatCurrency } from '../../../../helper/Helper'
 
 const CartContainer = () => {
   const {cart, setCart, cartQuantity, removeProductFromCart, clear, totalWithTaxes}= useContext(CartContext)
