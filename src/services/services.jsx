@@ -98,7 +98,7 @@ export const createOrder = async (orderData) => {
   try {
     const dbConnection = await addDoc(ordersCollection, {
       ...orderData,
-      createdAt: new Date().toISOString()
+      date: new Date().toISOString()
     })
     return { id: dbConnection.id, ...orderData }
   } catch (error) {
