@@ -1,19 +1,24 @@
 import { useContext, useState } from 'react'
 import { CartContext } from '../../../context/CartContext'
 import { updateStockForOrder, validateStockForOrder, createOrder } from '../../../services/services'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import CartEmpty from '../../../pages/CartEmpty'
 import CheckoutForm from './CheckoutForm'
 import '../../../App.css'
 import { formatCurrency, filterCartItems } from '../../../helper/Helper'
+import LoaderComponent, { CustomAlert } from '../../main/LoaderComponent'
+import Swal from 'sweetalert2'
+
 
 const Checkout = () => {
   const [orderId, setOrderId] = useState(null)
-  const [process, setProcess] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
   const { cart, clearCart, totalWithTaxes } = useContext(CartContext)
+  const navigate = useNavigate()
 
   const finalizarOrden = async (data) => {
-    setProcess(true)
+    setLoading(true)
     const orden = {
       buyer: {
         name: data.name,
@@ -36,11 +41,19 @@ const Checkout = () => {
       setOrderId(res.id)
       await updateStockForOrder(cart)
       clearCart()
+      Swal.fire({
+        icon: 'success',
+        title: '¡Orden procesada exitosamente!',
+        text: `Tu número de orden es: ${res.id}`,
+        confirmButtonText: 'Volver a Home'
+      }).then(() => {
+        navigate('/')
+      })
     } catch (error) {
+      setError("Ocurrió un error al procesar la orden. Intente nuevamente.")
       console.error("Error al procesar la orden:", error)
-      alert("Ocurrió un error al procesar la orden. Intente nuevamente.")
     } finally {
-      setProcess(false)
+      setLoading(false)
     }
   }
 
@@ -48,20 +61,30 @@ const Checkout = () => {
     return <CartEmpty />
   }
 
+  if (loading) {
+    return (
+      <main>
+        <LoaderComponent message="Procesando orden..." />
+      </main>
+    )
+  }
+
+  if (error) {
+    return (
+      <main>
+        <CustomAlert variant="danger" message={error} />
+      </main>
+    )
+  }
+
   return (
     <main>
       {orderId ? (
-        <div>
-          <h1 className="page-title">Muchas gracias por su compra</h1>
-          <p className="page-paragraph">
-            Su número de orden es: <strong>{orderId}</strong>
-          </p>
-          <Link className="btn btn-dark" to="/">Volver a Home</Link>
-        </div>
-      ) : (
+          <CustomAlert message="Orden procesada satisfactoriamente..." />
+        ) : (
         <div>
           <h1 className="page-title">Complete sus datos para enviar la órden de compra.</h1>
-          <CheckoutForm onSubmit={finalizarOrden} process={process} />
+          <CheckoutForm onSubmit={finalizarOrden} process={loading} />
           <p className="page-paragraph">
             Una vez enviada la orden, recibirá un correo con el detalle de su compra.
           </p>
