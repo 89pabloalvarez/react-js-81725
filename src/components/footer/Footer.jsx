@@ -1,6 +1,6 @@
 import logo from '../../assets/images/logo_dev_sin_fondo.png'
 import '../../App.css'
-const myLinkedIn = 'https://www.linkedin.com/in/pablo-alvarez-bernardez/'
+import { myLinkedIn } from '../../helper/constants'
 
 export default function Footer() {
   return (

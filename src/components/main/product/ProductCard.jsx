@@ -1,30 +1,38 @@
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import { formatCurrency } from '../../../helper/Helper'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import NoStock from '../../../assets/images/sin_stock.gif'
+import '../../../App.css'
 
 const ProductCard = ({ product }) => {
+  const navigate = useNavigate()
+
   return (
     <Card style={{ width: '18rem', margin: '1rem' }} className="d-flex flex-column">
-      <Card.Img
-        variant="top"
-        src={product.img}
-        style={{
-          width: '250px',
-          height: '250px',
-          objectFit: 'contain',
-          margin: '0 auto',
-          display: 'block',
-        }}
-        alt={product.name}
-      />
+      <div className="product-image-wrapper">
+        <Card.Img
+          variant="top"
+          src={product.img}
+          alt={product.name}
+          className="product-image"
+        />
+        {product.stock === 0 && (
+          <img src={NoStock} alt="Sin stock" className="no-stock-overlay" />
+        )}
+      </div>
       <Card.Body className="d-flex flex-column">
         <Card.Title className="text-center">{product.name}</Card.Title>
         <div className="mt-auto text-center fw-bold price-text text-success fs-5">
           {formatCurrency(product.price)}
         </div>
-        <Link to={`/product/${product.id}`} className="btn btn-primary mt-2">
+        <Button
+          variant="primary"
+          className="mt-2"
+          disabled={product.stock === 0}
+          onClick={() => navigate(`/product/${product.id}`)}
+        >
           Comprar
-        </Link>
+        </Button>
       </Card.Body>
     </Card>
   )
