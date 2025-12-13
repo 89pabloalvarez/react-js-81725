@@ -49,36 +49,43 @@ export const getProductById = async (id) => {
     }
 }
 
-// Validar stock de todos los productos antes de crear la orden.
+// Validar stock de todos los productos antes de crear la orden. Devuelvo los productos sin stock suficiente.
 export const validateStockForOrder = async (products) => {
+  const productsWithoutStock = []
   for (const product of products) {
-    const productRef = doc(db, PROJECTNAME, product.id)
-    const productSnapshot = await getDoc(productRef)
-    if (!productSnapshot.exists()) {
-      throw new Error(`Producto ID: "${product.id}" no encontrado.`)
-    }
-    const currentStock = productSnapshot.data().stock || 0
+    const dbConnection = await getDoc(
+      doc(db, PROJECTNAME, product.id)
+    )
+    const currentStock = dbConnection.data().stock || 0
     if (currentStock < product.quantity) {
-      throw new Error(
-        `Stock insuficiente para el producto "${product.name}" (ID: ${product.id}).`
-      )
+      productsWithoutStock.push({
+        id: product.id,
+        name: product.name,
+        reason: `Stock actual: ${currentStock}, solicitado: ${product.quantity}`
+      })
     }
   }
-  return true
+  return {
+    stockAvailable: productsWithoutStock.length === 0,
+    productsWithoutStock
+  }
 }
 
 // Actualizar stock de todos los productos después de crear la orden.
 export const updateStockForOrder = async (products) => {
-  const results = []
-  for (const product of products) {
-    const productRef = doc(db, PROJECTNAME, product.id)
-    const productSnapshot = await getDoc(productRef)
-    const currentStock = productSnapshot.data().stock || 0
-    const newStock = currentStock - product.quantity
-    await updateDoc(productRef, { stock: newStock })
-    results.push({ id: product.id, newStock })
+  try {
+    for (const product of products) {
+      const dbConnection = await getDoc(
+        doc(db, PROJECTNAME, product.id)
+      )
+      const currentStock = dbConnection.data().stock
+      const newStock = currentStock - product.quantity
+      await updateDoc(doc(db, PROJECTNAME, product.id), { stock: newStock })
+    }
+    return true
+  } catch (error) {
+    throw new Error("Error al actualizar el stock de los productos: " + error.message)
   }
-  return results
 }
 
 /*////////////////////////////////////////////////////*/
