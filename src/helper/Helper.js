@@ -44,6 +44,17 @@ export const capitalizeWords = (text) => {
     .join(' ')
 }
 
+// funcion para formatear el texto de la categoría.
 export const formatCategoryText = (text) => {
   return capitalizeWords(replaceHyphensWithSpaces(text))
+}
+
+// Hago una limpieza del carrito para enviar solo los datos necesarios a la orden.
+export const filterCartItems = (cart) => {
+  return cart.map(({ id, name, price, quantity }) => ({
+    id,
+    name,
+    price,
+    quantity
+  }))
 }
