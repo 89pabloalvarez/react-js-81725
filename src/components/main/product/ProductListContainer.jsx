@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import ProductList from './ProductList'
 import { useParams } from 'react-router-dom'
 import { replaceHyphensWithSpaces } from '../../../helper/Helper'
-import { getAllProducts, getProductsByCategory, getProductsBySearch } from '../../../service/productService'
+import { getAllProducts, getProductsByCategory, getProductsBySearch } from '../../../services/services'
 import LoaderComponent, { CustomAlert } from '../LoaderComponent'
 
 const ProductListContainer = () => {

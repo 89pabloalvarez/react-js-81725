@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getProductById } from '../../../service/productService'
+import { getProductById } from '../../../services/services'
 import ProductDetail from './ProductDetail'
 import { useParams } from 'react-router-dom'
 import LoaderComponent, { CustomAlert } from '../LoaderComponent'

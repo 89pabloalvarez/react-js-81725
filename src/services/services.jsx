@@ -9,17 +9,20 @@ import { PROJECTNAME, ORDERSTORAGE } from "../helper/constants"
 
 const productsCollection = collection(db, PROJECTNAME)
 
+// GET de todos los productos.
 export const getAllProducts = async () => {
     const dbConnection = await getDocs(productsCollection);
     return dbConnection.docs.map(doc => ({ id: doc.id, ...doc.data() }))
 }
 
+// GET de todos los productos por categoría.
 export const getProductsByCategory = async (category) => {
     const productsByCategory = query(productsCollection, where("category", "==", formatCategoryText(category)))
     const dbConnection = await getDocs(productsByCategory)
     return dbConnection.docs.map(doc => ({ id: doc.id, ...doc.data() }))
 }
 
+// GET de todos los productos por búsqueda de texto.
 export const getProductsBySearch = async (searchedText) => {
     const lowerText = replaceHyphensWithSpaces(searchedText.toLowerCase())
     const allProducts = await getAllProducts()
@@ -30,6 +33,7 @@ export const getProductsBySearch = async (searchedText) => {
     )
 }
 
+// GET de un producto por ID.
 export const getProductById = async (id) => {
     try {
         const dbConnection = await getDoc(
@@ -45,27 +49,36 @@ export const getProductById = async (id) => {
     }
 }
 
-export const updateProductStock = async (id, quantitySold) => {
-  try {
-    const productRef = doc(db, PROJECTNAME, id)
+// Validar stock de todos los productos antes de crear la orden.
+export const validateStockForOrder = async (products) => {
+  for (const product of products) {
+    const productRef = doc(db, PROJECTNAME, product.id)
     const productSnapshot = await getDoc(productRef)
-
     if (!productSnapshot.exists()) {
-      throw new Error(`Producto ID: "${id}" no encontrado.`)
+      throw new Error(`Producto ID: "${product.id}" no encontrado.`)
     }
-
     const currentStock = productSnapshot.data().stock || 0
-    const newStock = currentStock - quantitySold
-
-    if (newStock < 0) {
-      throw new Error(`No hay stock suficiente para el producto ID: "${id}".`)
+    if (currentStock < product.quantity) {
+      throw new Error(
+        `Stock insuficiente para el producto "${product.name}" (ID: ${product.id}).`
+      )
     }
-
-    await updateDoc(productRef, { stock: newStock })
-    return { id, newStock }
-  } catch (error) {
-    throw error
   }
+  return true
+}
+
+// Actualizar stock de todos los productos después de crear la orden.
+export const updateStockForOrder = async (products) => {
+  const results = []
+  for (const product of products) {
+    const productRef = doc(db, PROJECTNAME, product.id)
+    const productSnapshot = await getDoc(productRef)
+    const currentStock = productSnapshot.data().stock || 0
+    const newStock = currentStock - product.quantity
+    await updateDoc(productRef, { stock: newStock })
+    results.push({ id: product.id, newStock })
+  }
+  return results
 }
 
 /*////////////////////////////////////////////////////*/
