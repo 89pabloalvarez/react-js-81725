@@ -1,8 +1,10 @@
-import { Card } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 import { formatCurrency } from '../../../helper/Helper'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const ProductCard = ({ product }) => {
+  const navigate = useNavigate()
+
   return (
     <Card style={{ width: '18rem', margin: '1rem' }} className="d-flex flex-column">
       <Card.Img
@@ -22,9 +24,14 @@ const ProductCard = ({ product }) => {
         <div className="mt-auto text-center fw-bold price-text text-success fs-5">
           {formatCurrency(product.price)}
         </div>
-        <Link to={`/product/${product.id}`} className="btn btn-primary mt-2">
+        <Button
+          variant="primary"
+          className="mt-2"
+          disabled={product.stock === 0}
+          onClick={() => navigate(`/product/${product.id}`)}
+        >
           Comprar
-        </Link>
+        </Button>
       </Card.Body>
     </Card>
   )
