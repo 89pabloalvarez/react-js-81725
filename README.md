@@ -1,10 +1,76 @@
 # react-js-81725
+
 Repositorio creado para presentar las entregas de la comisión: #81725-react-js
 
 # Concepto del proyecto
 
-idea: E-commerce de un Kiosco, se penso la aplicación como una store donde el cliente entra, selecciona los productos que desea, las cantidades que desea de cada producto, el valor unitario, el valor parcial y la sumatoria total, asi como el impuesto que corresponda. Todo bien detallado, un botón de vaciar el carrito que des-seleccionaría los productos que ingreso y otro para confimar compra.
-Al finalizar la compra un ticket final con la compra, la direccion de correo del cliente y el nombre y apellido (si no tiene la sesion iniciada disparar un formulario ANTES de finalizar la compra para ingresar o registrarse). creo que la idea dispara varios modulos, login, registrarse, main page store, popup compra, se maneja una lista de productos, precio, imagenes, etc. me parece bastante completa la idea.
+## 💡 Idea: E‑commerce de un Kiosco
+La aplicación se concibe como una tienda online en la que el cliente puede:
+- Navegar por la página buscando los productos disponibles a través de la main page, las categorías y el combo de búsqueda.
+- Podrá tambien seleccionar las cantidades deseadas de cada producto.
+- Visualizar el valor unitario, el subtotal por producto, la sumatoria total y el impuesto correspondiente, todo de forma detallada en el carrito.
+El carrito de compras incluye dos acciones principales:
+- Vaciar carrito, que elimina todos los productos seleccionados.
+- Confirmar compra, que avanza al proceso de finalización.
+Avanzado éste paso, el cliente deberá cargar un formulario con sus datos:
+- Datos del cliente (Nombre, Apellido y e-Mail).
+Al confirmar la compra, el sistema genera un ticket final con el detalle de la operación, incluyendo:
+- Productos adquiridos.
+- Precio total.
+- El cliente recibirá un número de orden sobre la cual podría realizar el seguimiento de su pedido.
+
+![projectLogo](/public/assets/images/mainPage.png)
+
+
+## ⚙️ Instalación y ejecución
+
+Pre-Requisitos:
+- Node.js: Instalar versión LTS (recomendado). Versión 22.21.0
+- Git: Para clonar repositorios.
+- Un gestor de paquetes: npm (incluido con Node). Versión 11.6.2
+
+1. Clonar el repositorio:
+- Primero deberá seleccionar una carpeta vacía (confirme que no tenga archivos ocultos dentro).
+- Luego deberá ejecutar una terminal (la mas común es CMD o PowerShell).
+- - Ejecutará el comando `cd {PATH_LA_CARPETA_VACÍA}` para posicionarse en el lugar deseado.
+- - Ejecutará el comando `git clone https://github.com/89pabloalvarez/react-js-81725.git`.
+- - Por último seleccionará la rama correspondiente con el siguiente comando `git checkout main`. (en el caso de que por defecto ya este posicionado en main, este paso no es necesario).
+
+2. Instalar las dependencias:
+- Para instalar todos los paquetes para que funcione correctamente el proyecto, deberá ejecutar el comando `npm install`. Esperaremos que termine de ejecutar.
+
+3. Crear variables de entorno:
+- Dada las precauciones de seguridad, el proyecto no disponibiliza las variables de entorno, pero en el caso de contar con las mismas proporcionadas por el owner del proyecto, podrá crear un archivo `.env` en la raiz del proyecto con las variables necesarias para que se ejecute correctamente la conexión con los servicios de FIREBASE.
+
+4. Ejecución del proyecto:
+- Por último, para levantar el proyecto de manera local deberá ejecutar el comando `npm run dev`. Aguarda unos instantes y luego estará ejecutandose en `http://localhost` la aplicación junto con el puerto disponible que encuentre, por ejemplo: `http://localhost:5173/`; si abre ésa dirección en un browser podrá abrir la página del proyecto.
+- Alternativamente si cuenta con el IDE Visual Studio Code y levanta el proyecto desde ahi, en los scripts del package.json ya se encuentra el comando `"start:open": "npm run dev:open"` el cual a demás de levantar el proyecto, también abre la página directamente en el browser predeterminado.
+
+
+## 🌐 Versión Host
+
+- A través de `VERCEL` se hosteó la página de éste proyecto en éste link: [KioscoYa.com](https://react-js-81725.vercel.app/).
+
+### 🗂️ Para el desarrollo se utilizó:
+
+#### 📄 React + Vite
+- Como tecnología CORE para el proyecto.
+#### 📄 Bootstrap + Bootstrap-Icons
+- Para los estilos de la página.
+#### 📄 Sweet Alert
+- Como alertas para comunicarle al usuario.
+#### 📄 React Router Dom
+- Para la navegación.
+#### 📄 FIREBASE
+- Como base de datos para los productos y pedidos.
+
+
+# Este proyecto fue desarrollado por Pablo Alvarez, tambien conocido como Paul Rammone.
+## [LinkedIn](https://react-js-81725.vercel.app/)
+
+## TERCER ENTREGA:
+
+En ésta entrega sin duda me superé, en muy poco tiempo vi evolucionar mi página usando librerias externas que ni sabía que existían, lo que a su vez me impulsó a investigar que otras existen y fue muy interesante! Me gustó sacar el mock y ver que mis datos estaban guardados en una base de datos, la aplicación de repente tomó otro formato, le di volume al carrito y al manejo de los productos, el control de stock, las alertas, incluso hacer un componente loader con el spinner y la alerta me encantó!! Extraer las funciones para firebase, y usar algunas funciones en el context que se comunica a través de otros componentes me dio otras perspectivas que me volvió loco!! despues empezar a "jugar" con los apartados visuales.. por ejemplo en un momento me dije voy a inhabilitar el botón comprar si no tiene stock, ah y a demas le voy a agregar una imagen etiqueta superpuesta o mas tirando para la parte lógica, abri dos paginas en simultaneo y agregue al carrito los mismos articulos y en una pagina le consumí todo el stock y en la otra procesé la compra y en tiempo real me valido de que no había stock (funcionando el método que diseñe y no me llevo el stock en negativo! jaja), empezar a jugar con los botones del alert y después con la navegación, me encanto!; despues formatear la orden y tal como un "post" de una api clásica el addDoc agregando a una collection nueva de firebase el registro nuevo es espectacular, despues ver que me grababa datos innecesarios y hacer una funcion para guardar solo los datos que necesitava, fue una experiencia excelente, me encantó!! gracias por todo!!
 
 ## SEGUNDA ENTREGA:
 

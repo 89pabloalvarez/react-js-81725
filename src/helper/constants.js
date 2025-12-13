@@ -49,3 +49,4 @@ export const carouselLabels = [
 export const PROJECTNAME = 'kiosco'
 export const ORDERSTORAGE = 'ordenes'
 export const IVA = 0.21
+export const myLinkedIn = 'https://www.linkedin.com/in/pablo-alvarez-bernardez/'
