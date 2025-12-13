@@ -31,10 +31,16 @@ const Checkout = () => {
     try {
       const validation = await validateStockForOrder(cart)
       if (!validation.stockAvailable) {
-        alert(
-          `No se puede procesar la orden. Los siguientes productos no tienen stock suficiente:\n` +
-          validation.productsWithoutStock.map(p => `- ${p.name} (${p.reason})`).join('\n')
-        )
+        const messageLines = validation.productsWithoutStock.map(p => `- ${p.name} (${p.reason})`).join('<br>')
+        Swal.fire({
+          icon: 'danger',
+          title: '¡La orden no se pudo procesar!',
+          text: '',
+          html: `Algunos productos no tienen stock suficiente:${'<br><br>'}${messageLines}`,
+          confirmButtonText: 'Volver al carrito'
+        }).then(() => {
+          navigate('/cart')
+        })
         return
       }
       const res = await createOrder(orden)
@@ -79,9 +85,7 @@ const Checkout = () => {
 
   return (
     <main>
-      {orderId ? (
-          <CustomAlert message="Orden procesada satisfactoriamente..." />
-        ) : (
+      {orderId ? null : (
         <div>
           <h1 className="page-title">Complete sus datos para enviar la órden de compra.</h1>
           <CheckoutForm onSubmit={finalizarOrden} process={loading} />

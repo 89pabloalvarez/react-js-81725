@@ -56,7 +56,7 @@ export const validateStockForOrder = async (products) => {
     const dbConnection = await getDoc(
       doc(db, PROJECTNAME, product.id)
     )
-    const currentStock = dbConnection.data().stock || 0
+    const currentStock = dbConnection.data().stock
     if (currentStock < product.quantity) {
       productsWithoutStock.push({
         id: product.id,
