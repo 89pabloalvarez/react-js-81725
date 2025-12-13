@@ -1,7 +1,11 @@
-import { collection, getDocs, query, where, getDoc, doc } from "firebase/firestore"
+import { collection, getDocs, query, where, getDoc, doc, addDoc, updateDoc } from "firebase/firestore"
 import { db } from "./firebase"
 import { formatCategoryText, replaceHyphensWithSpaces } from "../helper/Helper"
-import { PROJECTNAME } from "../helper/constants"
+import { PROJECTNAME, ORDERSTORAGE } from "../helper/constants"
+
+/*////////////////////////////////////////////////////*/
+/*//////////////////////PRODUCTS//////////////////////*/
+/*////////////////////////////////////////////////////*/
 
 const productsCollection = collection(db, PROJECTNAME)
 
@@ -39,4 +43,45 @@ export const getProductById = async (id) => {
     } catch (error) {
         throw error
     }
+}
+
+export const updateProductStock = async (id, quantitySold) => {
+  try {
+    const productRef = doc(db, PROJECTNAME, id)
+    const productSnapshot = await getDoc(productRef)
+
+    if (!productSnapshot.exists()) {
+      throw new Error(`Producto ID: "${id}" no encontrado.`)
+    }
+
+    const currentStock = productSnapshot.data().stock || 0
+    const newStock = currentStock - quantitySold
+
+    if (newStock < 0) {
+      throw new Error(`No hay stock suficiente para el producto ID: "${id}".`)
+    }
+
+    await updateDoc(productRef, { stock: newStock })
+    return { id, newStock }
+  } catch (error) {
+    throw error
+  }
+}
+
+/*////////////////////////////////////////////////////*/
+/*///////////////////////ORDERS///////////////////////*/
+/*////////////////////////////////////////////////////*/
+
+const ordersCollection = collection(db, ORDERSTORAGE)
+
+export const createOrder = async (orderData) => {
+  try {
+    const dbConnection = await addDoc(ordersCollection, {
+      ...orderData,
+      createdAt: new Date().toISOString()
+    })
+    return { id: dbConnection.id, ...orderData }
+  } catch (error) {
+    throw error
+  }
 }
