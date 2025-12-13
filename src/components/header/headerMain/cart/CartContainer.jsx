@@ -79,8 +79,14 @@ const CartContainer = () => {
         </tbody>
       </table>
       <div className="cart-totals">
-        <p><strong>Precio Total:</strong><div className='fw-bold text-success'>{formatCurrency(totalToPay())}</div></p>
-        <p><strong>Precio Total con impuestos:</strong><div className='fw-bold text-success'>{formatCurrency(totalWithTaxes())}</div></p>
+        <p>
+          <strong>Precio Total: </strong>
+          <span className='fw-bold text-success'>{formatCurrency(totalToPay())}</span>
+        </p>
+        <p>
+          <strong>Precio Total con impuestos: </strong>
+          <span className='fw-bold text-success'>{formatCurrency(totalWithTaxes())}</span>
+        </p>
       </div>
       <div className="cart-actions">
         <button className="btn btn-danger" onClick={handleRemovePoroducts}>Vaciar el carrito</button>
