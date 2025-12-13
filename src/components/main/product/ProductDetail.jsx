@@ -13,18 +13,25 @@ const ProductDetail = ({product}) => {
   const onAdd=(count)=>{
     setShowProductCount(false)
     Swal.fire({
-        icon:'question',
-        title:'¿Agregado al carrito?',
-        text: `Deseas agregar ${count === 1 ? count + ' unidad': count + ' unidades'} del producto: ${product.name}`,
-        showDenyButton:true,
-        denyButtonText:'No, volver',
-        confirmButtonText:'Si, ir al carrito',
-        reverseButtons: true
-    }).then((result)=>{
-      if(result.isConfirmed){
+      icon: 'question',
+      title: '¿Agregado al carrito?',
+      text: `Deseas agregar ${count === 1 ? count + ' unidad' : count + ' unidades'} del producto: ${product.name}`,
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'Si, ir al carrito',
+      denyButtonText: 'Si, Seguir comprando',
+      cancelButtonText: 'No, volver',
+      denyButtonColor: '#6c757d',
+      cancelButtonColor: '#d33',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
         addProductToCart(product, count)
         navigate('/cart')
-      } else {
+      } else if (result.isDenied) {
+        addProductToCart(product, count)
+        navigate(-1)
+      } else if (result.isDismissed) {
         setShowProductCount(true)
       }
     })
