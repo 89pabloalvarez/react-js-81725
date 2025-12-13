@@ -83,8 +83,8 @@ const CartContainer = () => {
         <p><strong>Precio Total con impuestos:</strong><div className='fw-bold text-success'>{formatCurrency(totalWithTaxes())}</div></p>
       </div>
       <div className="cart-actions">
-        <button className="btn btn-danger" onClick={handleRemovePoroducts}>Vaciar carrito</button>
-        <Link className="btn btn-success" to="/checkout">Terminar Compra</Link>
+        <button className="btn btn-danger" onClick={handleRemovePoroducts}>Vaciar el carrito</button>
+        <Link className="btn btn-success" to="/checkout">Continuar con la orden</Link>
       </div>
       <p className="page-paragraph"><strong>IVA 21%</strong> </p>
     </main>
