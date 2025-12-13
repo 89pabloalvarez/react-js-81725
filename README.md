@@ -4,8 +4,8 @@ Repositorio creado para presentar las entregas de la comisión: #81725-react-js
 
 # Concepto del proyecto
 
-## 💡 Idea: E‑commerce de un Kiosco
-La aplicación se concibe como una tienda online en la que el cliente puede:
+## 💡 Idea: E‑commerce de un Quiosco
+La aplicación surge con la idea un quiosco online, se estableció "KioscoYa" como nombre ya que etimológicamente quiosco con "K" es correcto segun la RAE, a demás "Ya" da una sensación de inmediatez atractiva para el cliente. En la aplicación, el cliente puede:
 - Navegar por la página buscando los productos disponibles a través de la main page, las categorías y el combo de búsqueda.
 - Podrá tambien seleccionar las cantidades deseadas de cada producto.
 - Visualizar el valor unitario, el subtotal por producto, la sumatoria total y el impuesto correspondiente, todo de forma detallada en el carrito.
@@ -51,24 +51,25 @@ Pre-Requisitos:
 
 - A través de `VERCEL` se hosteó la página de éste proyecto en éste link: [KioscoYa.com](https://react-js-81725.vercel.app/).
 
+
 ### 🗂️ Para el desarrollo se utilizó:
 
-#### 📄 React + Vite
+### - 📄 React + Vite
 - Como tecnología CORE para el proyecto.
-#### 📄 Bootstrap + Bootstrap-Icons
+### - 📄 Bootstrap + Bootstrap-Icons
 - Para los estilos de la página.
-#### 📄 Sweet Alert
+### - 📄 Sweet Alert
 - Como alertas para comunicarle al usuario.
-#### 📄 React Router Dom
+### - 📄 React Router Dom
 - Para la navegación.
-#### 📄 FIREBASE
+### - 📄 FIREBASE
 - Como base de datos para los productos y pedidos.
 
 
-# Este proyecto fue desarrollado por Pablo Alvarez, tambien conocido como Paul Rammone.
+## Este proyecto fue desarrollado por Pablo Alvarez (Paul Rammone).
 ## [LinkedIn](https://react-js-81725.vercel.app/)
 
-## TERCER ENTREGA:
+## ENTREGA FINAL:
 
 En ésta entrega sin duda me superé, en muy poco tiempo vi evolucionar mi página usando librerias externas que ni sabía que existían, lo que a su vez me impulsó a investigar que otras existen y fue muy interesante! Me gustó sacar el mock y ver que mis datos estaban guardados en una base de datos, la aplicación de repente tomó otro formato, le di volume al carrito y al manejo de los productos, el control de stock, las alertas, incluso hacer un componente loader con el spinner y la alerta me encantó!! Extraer las funciones para firebase, y usar algunas funciones en el context que se comunica a través de otros componentes me dio otras perspectivas que me volvió loco!! despues empezar a "jugar" con los apartados visuales.. por ejemplo en un momento me dije voy a inhabilitar el botón comprar si no tiene stock, ah y a demas le voy a agregar una imagen etiqueta superpuesta o mas tirando para la parte lógica, abri dos paginas en simultaneo y agregue al carrito los mismos articulos y en una pagina le consumí todo el stock y en la otra procesé la compra y en tiempo real me valido de que no había stock (funcionando el método que diseñe y no me llevo el stock en negativo! jaja), empezar a jugar con los botones del alert y después con la navegación, me encanto!; despues formatear la orden y tal como un "post" de una api clásica el addDoc agregando a una collection nueva de firebase el registro nuevo es espectacular, despues ver que me grababa datos innecesarios y hacer una funcion para guardar solo los datos que necesitava, fue una experiencia excelente, me encantó!! gracias por todo!!
 
