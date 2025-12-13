@@ -17,8 +17,9 @@ const ProductDetail = ({product}) => {
         title:'¿Agregado al carrito?',
         text: `Deseas agregar ${count === 1 ? count + ' unidad': count + ' unidades'} del producto: ${product.name}`,
         showDenyButton:true,
-        denyButtonText:'No, volver.',
-        confirmButtonText:'Si, ir al carrito.'
+        denyButtonText:'No, volver',
+        confirmButtonText:'Si, ir al carrito',
+        reverseButtons: true
     }).then((result)=>{
       if(result.isConfirmed){
         addProductToCart(product, count)
