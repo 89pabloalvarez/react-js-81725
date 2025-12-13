@@ -1,6 +1,13 @@
+import { IVA } from "./constants"
+
 // Formateo el importe que viene con formato decimal con "." a decimal con ","
 export const formatCurrency = (amount) => {
-    return `$${amount.toFixed(2).replace('.', ',')}`;
+  return `$${amount.toFixed(2).replace('.', ',')}`
+}
+
+export const formatCurrencyWithTaxes = (amount) => {
+  const amountWithTaxes = amount * (1 + IVA)
+  return formatCurrency(amountWithTaxes)
 }
 
 // Funcion de sumar para el contador de productos.
@@ -37,6 +44,17 @@ export const capitalizeWords = (text) => {
     .join(' ')
 }
 
+// funcion para formatear el texto de la categoría.
 export const formatCategoryText = (text) => {
   return capitalizeWords(replaceHyphensWithSpaces(text))
+}
+
+// Hago una limpieza del carrito para enviar solo los datos necesarios a la orden.
+export const filterCartItems = (cart) => {
+  return cart.map(({ id, name, price, quantity }) => ({
+    id,
+    name,
+    price,
+    quantity
+  }))
 }

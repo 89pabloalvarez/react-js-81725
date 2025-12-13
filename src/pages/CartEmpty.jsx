@@ -8,7 +8,7 @@ const CartEmpty = () => {
     <main>
         <h1 className="page-title">Tu carrito está vacío!!!</h1>
         <p className="page-paragraph"> No hay productos en tu carrito de compras. </p>
-        <p className="page-paragraph"> Puedes explorar la página principal o navegar por las categorías a la izquierda para encontrar lo que quieras. </p>
+        <p className="page-paragraph"> Puedes explorar la página principal o navegar por las categorías acá a la izquierda para encontrar el producto que necesites. </p>
         <img className="emptycart-image" src={emptyCartImg} alt="Carrito vacío" />
         <div className="d-flex justify-content-center">
             <Link to="/" className="btn btn-primary mt-3">

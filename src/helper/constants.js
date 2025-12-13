@@ -47,3 +47,5 @@ export const carouselLabels = [
 ]
 
 export const PROJECTNAME = 'kiosco'
+export const ORDERSTORAGE = 'ordenes'
+export const IVA = 0.21

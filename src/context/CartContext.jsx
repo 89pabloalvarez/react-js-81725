@@ -33,8 +33,8 @@ export const CartProvider = ({children}) => {
     }
 
     const cartQuantity = ()=>{
-        // return cart.reduce((acc , prod)=> acc += prod.quantity, 0) // Ésto me suma todas las cantidades de productos en el carrito. Solo quiero la cantidad de productos diferentes en el carrito.
-        return cart.length // Ésto me da la cantidad de productos diferentes en el carrito que es lo que busco en mi aplicación.
+        return cart.reduce((acc , prod)=> acc += prod.quantity, 0) // Todas las unidades que tengo en el carrito (para cumplir con la consigna de la entrega final).
+        // return cart.length // Ésto me da la cantidad de productos diferentes en el carrito que es lo que busco en mi aplicación.
     }
 
     const productQuantity = (id)=>{
@@ -55,17 +55,16 @@ export const CartProvider = ({children}) => {
         }
     }
 
-    const totalWithTaxes = () => {
-        const subtotal = cart.reduce((acc, prod) => acc + prod.quantity * prod.price, 0)
-        return subtotal * 1.21
+    const totalToPay = () => {
+        return cart.reduce((acc, prod) => acc + prod.quantity * prod.price, 0)
     }
 
-    const removeProduct = (id)=>{
-        setCart(cart.filter((prod)=> prod.id !== id))
+    const totalWithTaxes = () => {
+        return totalToPay() * 1.21
     }
 
     return (
-        <CartContext.Provider value={{cart, addProductToCart, removeProductFromCart, clearCart, isInCart, productQuantity, productWithTaxes, totalWithTaxes, removeProduct, cartQuantity}}>
+        <CartContext.Provider value={{cart, setCart, addProductToCart, removeProductFromCart, clearCart, isInCart, productQuantity, productWithTaxes, totalToPay, totalWithTaxes, cartQuantity}}>
             {children}
         </CartContext.Provider>
     )
