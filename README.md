@@ -66,8 +66,8 @@ Pre-Requisitos:
 - Como base de datos para los productos y pedidos.
 
 
-# Este proyecto fue desarrollado por Pablo Alvarez (Paul Rammone).
-[LinkedIn](https://react-js-81725.vercel.app/)
+## Este proyecto fue desarrollado por Pablo Alvarez (Paul Rammone).
+## [LinkedIn](https://react-js-81725.vercel.app/)
 
 ## ENTREGA FINAL:
 
