@@ -43,6 +43,9 @@ const CartContainer = () => {
       <h1 className="page-title">¡¡Bienvenido a tu carrito de compras!!</h1>
       <p className="page-paragraph">Ésta es tu lista de compras.</p>
       <p className="page-paragraph">Por favor revisá los artículos agregados y que las cantidades sean correctas.</p>
+      <div className="cart-actions">
+        <Link className="btn btn-info" to="/">Seguir comprando</Link>
+      </div>
       <table className="cart-table">
         <thead>
           <tr>
@@ -92,7 +95,7 @@ const CartContainer = () => {
         <button className="btn btn-danger" onClick={handleRemovePoroducts}>Vaciar el carrito</button>
         <Link className="btn btn-success" to="/checkout">Continuar con la orden</Link>
       </div>
-      <p className="page-paragraph"><strong>IVA 21%</strong> </p>
+      <p className="page-paragraph">Impuestos aplicados: <strong>IVA 21%</strong> </p>
     </main>
   )
 }
